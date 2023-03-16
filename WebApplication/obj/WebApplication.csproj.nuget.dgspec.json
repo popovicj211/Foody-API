@@ -1,0 +1,392 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\WebApplication\\WebApplication.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\Application\\Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\Application\\Application.csproj",
+        "projectName": "Application",
+        "projectPath": "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\ANGS5\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ANGS5\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\Domain\\Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.5.1, )"
+            },
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\Domain\\Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\Domain\\Domain.csproj",
+        "projectName": "Domain",
+        "projectPath": "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\ANGS5\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ANGS5\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\EFDataAccess\\EFDataAccess.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\EFDataAccess\\EFDataAccess.csproj",
+        "projectName": "EFDataAccess",
+        "projectPath": "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\EFDataAccess\\EFDataAccess.csproj",
+        "packagesPath": "C:\\Users\\ANGS5\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\EFDataAccess\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ANGS5\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\Domain\\Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Bogus": {
+              "target": "Package",
+              "version": "[34.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\Implementation\\Implementation.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\Implementation\\Implementation.csproj",
+        "projectName": "Implementation",
+        "projectPath": "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\Implementation\\Implementation.csproj",
+        "packagesPath": "C:\\Users\\ANGS5\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\Implementation\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ANGS5\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\Application\\Application.csproj"
+              },
+              "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\EFDataAccess\\EFDataAccess.csproj": {
+                "projectPath": "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\EFDataAccess\\EFDataAccess.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\WebApplication\\WebApplication.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\WebApplication\\WebApplication.csproj",
+        "projectName": "WebApplication",
+        "projectPath": "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\WebApplication\\WebApplication.csproj",
+        "packagesPath": "C:\\Users\\ANGS5\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\WebApplication\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ANGS5\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\Application\\Application.csproj"
+              },
+              "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\Domain\\Domain.csproj"
+              },
+              "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\EFDataAccess\\EFDataAccess.csproj": {
+                "projectPath": "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\EFDataAccess\\EFDataAccess.csproj"
+              },
+              "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\Implementation\\Implementation.csproj": {
+                "projectPath": "C:\\Users\\ANGS5\\source\\repos\\kopija Web tehnologije\\WebTehnologije\\FoodyAPI\\Implementation\\Implementation.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

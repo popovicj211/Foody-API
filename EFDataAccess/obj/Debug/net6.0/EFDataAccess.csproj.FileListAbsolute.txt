@@ -1,0 +1,34 @@
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFDataAccess\bin\Debug\net6.0\EFDataAccess.deps.json
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFDataAccess\bin\Debug\net6.0\EFDataAccess.runtimeconfig.json
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFDataAccess\bin\Debug\net6.0\EFDataAccess.dll
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFDataAccess\bin\Debug\net6.0\EFDataAccess.pdb
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFDataAccess\bin\Debug\net6.0\Domain.dll
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFDataAccess\bin\Debug\net6.0\Domain.pdb
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFDataAccess\obj\Debug\net6.0\EFDataAccess.csproj.AssemblyReference.cache
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFDataAccess\obj\Debug\net6.0\EFDataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFDataAccess\obj\Debug\net6.0\EFDataAccess.AssemblyInfoInputs.cache
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFDataAccess\obj\Debug\net6.0\EFDataAccess.AssemblyInfo.cs
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFDataAccess\obj\Debug\net6.0\EFDataAccess.csproj.CoreCompileInputs.cache
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFDataAccess\obj\Debug\net6.0\EFDataAccess.csproj.CopyComplete
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFDataAccess\obj\Debug\net6.0\EFDataAccess.dll
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFDataAccess\obj\Debug\net6.0\refint\EFDataAccess.dll
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFDataAccess\obj\Debug\net6.0\EFDataAccess.pdb
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFDataAccess\obj\Debug\net6.0\EFDataAccess.genruntimeconfig.cache
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFDataAccess\obj\Debug\net6.0\ref\EFDataAccess.dll
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFDataAccess\bin\Debug\net6.0\EFDataAccess.deps.json
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFDataAccess\bin\Debug\net6.0\EFDataAccess.runtimeconfig.json
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFDataAccess\bin\Debug\net6.0\EFDataAccess.dll
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFDataAccess\bin\Debug\net6.0\EFDataAccess.pdb
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFDataAccess\bin\Debug\net6.0\Domain.dll
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFDataAccess\bin\Debug\net6.0\Domain.pdb
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFDataAccess\obj\Debug\net6.0\EFDataAccess.csproj.AssemblyReference.cache
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFDataAccess\obj\Debug\net6.0\EFDataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFDataAccess\obj\Debug\net6.0\EFDataAccess.AssemblyInfoInputs.cache
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFDataAccess\obj\Debug\net6.0\EFDataAccess.AssemblyInfo.cs
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFDataAccess\obj\Debug\net6.0\EFDataAccess.csproj.CoreCompileInputs.cache
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFDataAccess\obj\Debug\net6.0\EFDataAccess.csproj.CopyComplete
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFDataAccess\obj\Debug\net6.0\EFDataAccess.dll
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFDataAccess\obj\Debug\net6.0\refint\EFDataAccess.dll
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFDataAccess\obj\Debug\net6.0\EFDataAccess.pdb
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFDataAccess\obj\Debug\net6.0\EFDataAccess.genruntimeconfig.cache
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFDataAccess\obj\Debug\net6.0\ref\EFDataAccess.dll

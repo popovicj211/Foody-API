@@ -1,0 +1,24 @@
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFCommands\bin\Debug\net6.0\EFCommands.deps.json
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFCommands\bin\Debug\net6.0\EFCommands.dll
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFCommands\bin\Debug\net6.0\EFCommands.pdb
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFCommands\obj\Debug\net6.0\EFCommands.csproj.AssemblyReference.cache
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFCommands\obj\Debug\net6.0\EFCommands.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFCommands\obj\Debug\net6.0\EFCommands.AssemblyInfoInputs.cache
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFCommands\obj\Debug\net6.0\EFCommands.AssemblyInfo.cs
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFCommands\obj\Debug\net6.0\EFCommands.csproj.CoreCompileInputs.cache
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFCommands\obj\Debug\net6.0\EFCommands.dll
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFCommands\obj\Debug\net6.0\refint\EFCommands.dll
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFCommands\obj\Debug\net6.0\EFCommands.pdb
+C:\Users\ANGS5\source\repos\WebTehnologije\FoodyAPI\EFCommands\obj\Debug\net6.0\ref\EFCommands.dll
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFCommands\bin\Debug\net6.0\EFCommands.deps.json
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFCommands\bin\Debug\net6.0\EFCommands.dll
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFCommands\bin\Debug\net6.0\EFCommands.pdb
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFCommands\obj\Debug\net6.0\EFCommands.csproj.AssemblyReference.cache
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFCommands\obj\Debug\net6.0\EFCommands.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFCommands\obj\Debug\net6.0\EFCommands.AssemblyInfoInputs.cache
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFCommands\obj\Debug\net6.0\EFCommands.AssemblyInfo.cs
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFCommands\obj\Debug\net6.0\EFCommands.csproj.CoreCompileInputs.cache
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFCommands\obj\Debug\net6.0\EFCommands.dll
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFCommands\obj\Debug\net6.0\refint\EFCommands.dll
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFCommands\obj\Debug\net6.0\EFCommands.pdb
+C:\Users\ANGS5\source\repos\kopija Web tehnologije\WebTehnologije\FoodyAPI\EFCommands\obj\Debug\net6.0\ref\EFCommands.dll
