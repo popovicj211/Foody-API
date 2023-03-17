@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers.Admin
 {
-    [Route("api/[controller]")]
+    [Route("api/admin/[controller]")]
     [ApiController]
     public class IngredientsController : ControllerBase
     {
@@ -35,7 +35,7 @@ namespace WebAPI.Controllers.Admin
             _context = context;
         }
 
-        // GET: api/<UserControllers>
+        // GET: api/<IngredientsControllers>
         [HttpGet]
         public ActionResult<IEnumerable<IngredientDTO>> Get([FromQuery] BaseSearchRequest request)
         {
@@ -50,7 +50,7 @@ namespace WebAPI.Controllers.Admin
             }
         }
 
-        // GET api/<UserControllers>/5
+        // GET api/<IngredientsControllers>/5
         [HttpGet("{id}")]
         public ActionResult<IEnumerable<IngredientDTO>> Get(int id)
         {
@@ -69,7 +69,7 @@ namespace WebAPI.Controllers.Admin
             }
         }
 
-        // POST api/<UserControllers>
+        // POST api/<IngredientsControllers>
         [HttpPost]
         [Obsolete]
         public ActionResult Post([FromBody] IngredientDTO request)
@@ -92,7 +92,7 @@ namespace WebAPI.Controllers.Admin
             }
         }
 
-        // PUT api/<UserControllers>/5
+        // PUT api/<IngredientsControllers>/5
         [HttpPut("{id}")]
         [Obsolete]
         public ActionResult Put(int id, [FromBody] IngredientDTO request)
@@ -118,7 +118,7 @@ namespace WebAPI.Controllers.Admin
             }
         }
 
-        // DELETE api/<UserControllers>/5
+        // DELETE api/<IngredientsControllers>/5
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {

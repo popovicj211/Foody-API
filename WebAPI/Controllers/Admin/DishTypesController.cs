@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers.Admin
 {
-    [Route("api/[controller]")]
+    [Route("api/admin/[controller]")]
     [ApiController]
     public class DishTypesController : ControllerBase
     {
@@ -35,7 +35,7 @@ namespace WebAPI.Controllers.Admin
             _context = context;
         }
 
-        // GET: api/<DishTypeController>
+        // GET: api/<DishTypesController>
         [HttpGet]
         public ActionResult<IEnumerable<DishTypeDTO>> Get([FromQuery] BaseSearchRequest request)
         {
@@ -50,7 +50,7 @@ namespace WebAPI.Controllers.Admin
             }
         }
 
-        // GET api/<DishTypeController>/5
+        // GET api/<DishTypesController>/5
         [HttpGet("{id}")]
         public ActionResult<IEnumerable<DishTypeDTO>> Get(int id)
         {
@@ -69,7 +69,7 @@ namespace WebAPI.Controllers.Admin
             }
         }
 
-        // POST api/<DishTypeController>
+        // POST api/<DishTypesController>
         [HttpPost]
         [Obsolete]
         public ActionResult Post([FromBody] DishTypeDTO request)
@@ -92,7 +92,7 @@ namespace WebAPI.Controllers.Admin
             }
         }
 
-        // PUT api/<DishTypeController>/5
+        // PUT api/<DishTypesController>/5
         [HttpPut("{id}")]
         [Obsolete]
         public ActionResult Put(int id, [FromBody] DishTypeDTO request)
@@ -118,7 +118,7 @@ namespace WebAPI.Controllers.Admin
             }
         }
 
-        // DELETE api/<DishTypeController>/5
+        // DELETE api/<DishTypesController>/5
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {

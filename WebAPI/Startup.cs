@@ -19,6 +19,9 @@ using Application.Commands;
 using Implementation.Services.Commands;
 using Application.Queries;
 using Implementation.Services.Queriess;
+using Application.FileUpload;
+using Application.Queries.Auth;
+using Implementation.Services.Queriess.Auth;
 
 namespace WebAPI
 {
@@ -55,6 +58,8 @@ namespace WebAPI
                 });
             });
 
+            services.AddTransient<ILoginUserQuery, EFLoginUserQuery>();
+            services.AddTransient<IRegisterUserQuery, EFRegisterUserQuery>();
 
             services.AddTransient<IAddUserCommand, EFAddUserCommand>();
             services.AddTransient<IUpdateUserCommand, EFUpdateUserCommand>();
@@ -73,6 +78,32 @@ namespace WebAPI
             services.AddTransient<IDeleteDishTypeCommand, EFDeleteDishTypeCommand>();
             services.AddTransient<IGetDishTypeQuery, EFGetDishTypeQuery>();
             services.AddTransient<IGetDishTypesQuery, EFGetDishTypesQuery>();
+
+            services.AddTransient<IAddDishCommand, EFAddDishCommand>();
+            services.AddTransient<IUpdateDishCommand, EFUpdateDishCommand>();
+            services.AddTransient<IDeleteDishCommand, EFDeleteDishCommand>();
+            services.AddTransient<IGetDishQuery, EFGetDishQuery>();
+            services.AddTransient<IGetDishesQuery, EFGetDishesQuery>();
+
+            services.AddTransient<IAddOrderCommand, EFAddOrderCommand>();
+            services.AddTransient<IUpdateOrderCommand, EFUpdateOrderCommand>();
+            services.AddTransient<IDeleteOrderCommand, EFDeleteOrderCommand>();
+            services.AddTransient<IGetOrderQuery, EFGetOrderQuery>();
+            services.AddTransient<IGetOrdersQuery, EFGetOrdersQuery>();
+
+            services.AddTransient<IAddContactCommand, EFAddContactCommand>();
+            services.AddTransient<IUpdateContactCommand, EFUpdateContactCommand>();
+            services.AddTransient<IDeleteContactCommand, EFDeleteContactCommand>();
+            services.AddTransient<IGetContactQuery, EFGetContactQuery>();
+            services.AddTransient<IGetContactsQuery, EFGetContactsQuery>();
+
+            services.AddTransient<IAddCommentCommand, EFAddCommentCommand>();
+            services.AddTransient<IUpdateCommentCommand, EFUpdateCommentCommand>();
+            services.AddTransient<IDeleteCommentCommand, EFDeleteCommentCommand>();
+            services.AddTransient<IGetCommentQuery, EFGetCommentQuery>();
+            services.AddTransient<IGetCommentQuery, EFGetCommentQuery>();
+
+            services.AddSingleton<IFIleService, FileUploadService>();
 
             services.AddSingleton
                 <IPasswordHashing, HashingPassword>((service) => new HashingPassword(new RNGCryptoServiceProvider()));
@@ -104,39 +135,6 @@ namespace WebAPI
                     ValidateAudience = false,
                 };
             });
-
-            //services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
-            //services.AddTransient<IRegisterUserCommand, EFRegisterUserCommand>();
-            //services.AddTransient<IAuthUserCommand, EFAuthUserCommand>();
-
-            //var key = Configuration.GetSection("Encryption")["key"];
-            //var enc = new Encryption(key);
-            //services.AddSingleton(enc);
-
-
-            //services.AddTransient(s => {
-            //    var http = s.GetRequiredService<IHttpContextAccessor>();
-            //    var value = http.HttpContext.Request.Headers["Authorization"].ToString();
-            //    var encryption = s.GetRequiredService<Encryption>();
-
-            //    try
-            //    {
-            //        var decodedString = encryption.DecryptString(value);
-            //        decodedString = decodedString.Replace("\t", "");
-            //        var user = JsonConvert.DeserializeObject<LoggedUser>(decodedString);
-            //        user.IsLogged = true;
-            //        return user;
-            //    }
-            //    catch (Exception)
-            //    {
-            //        return new LoggedUser
-            //        {
-            //            IsLogged = false
-            //        };
-            //    }
-            //});
-
-
 
         }
 

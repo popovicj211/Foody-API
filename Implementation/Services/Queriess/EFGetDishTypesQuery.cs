@@ -25,9 +25,9 @@ namespace Implementation.Services.Queriess
 
         public PagedResponse<DishTypeDTO> Execute(BaseSearchRequest request)
         {
-            var ingredients = _context.DishTypes.AsQueryable();
+            var dishTypes = _context.DishTypes.AsQueryable();
 
-            return ingredients.Where(d => !d.IsDeleted).ProjectTo<DishTypeDTO>(_mapper.ConfigurationProvider).Select(user => new DishTypeDTO
+            return dishTypes.Where(d => !d.IsDeleted).ProjectTo<DishTypeDTO>(_mapper.ConfigurationProvider).Select(user => new DishTypeDTO
             {
                 Id = user.Id,
                 Name = user.Name
