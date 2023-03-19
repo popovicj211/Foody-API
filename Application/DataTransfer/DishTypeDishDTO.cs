@@ -10,10 +10,10 @@ namespace Application.DataTransfer
     {
         public DishTypeDishDTO()
         {
-            DishTypeIds = new List<string>();
+            DishTypeIds = new List<int>();
         }
 
-        public List<string> DishTypeIds { get; set; }
+        public List<int> DishTypeIds { get; set; }
         public int DishId { get; set; }
         public int TypeId { get; set; }
         public DishDTO Dish { get; set; }

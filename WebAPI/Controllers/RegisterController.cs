@@ -31,7 +31,7 @@ namespace WebAPI.Controllers
         // POST api/<RegisterController>
         [HttpPost]
         [Obsolete]
-        public ActionResult Register([FromBody] UserDTO request)
+        public ActionResult Register([FromForm] UserDTO request)
         {
             var validator = new RegisterFluentValidator(_context);
             var errors = validator.Validate(request);
@@ -43,10 +43,10 @@ namespace WebAPI.Controllers
             try
             {
                 var token = _registerUserCommand.Execute(request);
-                _emailService.Body = "You have succcessfully registered.";
-                _emailService.Subject = "Registration mail";
-                _emailService.ToEmail = request.Email;
-                _emailService.Send();
+                //_emailService.Body = "You have succcessfully registered.";
+                //_emailService.Subject = "Registration mail";
+                //_emailService.ToEmail = request.Email;
+                //_emailService.Send();
                 //EMAIL
 
                 HttpContext
@@ -56,9 +56,10 @@ namespace WebAPI.Controllers
 
                 return Ok(new { message = "You have succesfully register.", token });
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return StatusCode(500, new { ServerErrorResponse.Message });
+                // return StatusCode(500, new { ServerErrorResponse.Message });
+                return StatusCode(500, e);
             }
         }
     }

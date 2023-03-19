@@ -28,7 +28,7 @@ namespace WebAPI.Controllers
         // POST api/<LoginController>
         [HttpPost]
         [Obsolete]
-        public ActionResult Login([FromBody] LoginDTO value)
+        public ActionResult Login([FromForm] LoginDTO value)
         {
 
             var validator = new LoginFluentValidator();

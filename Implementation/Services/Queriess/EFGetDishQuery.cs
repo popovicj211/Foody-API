@@ -23,10 +23,15 @@ namespace Implementation.Services.Queriess
 
         public DishDTO Execute(int id)
         {
-            var dish = _context.Dishes.Where(u => !u.IsDeleted).ProjectTo<DishDTO>(_mapper.ConfigurationProvider).Select(u => new DishDTO
+            var dish = this._context.Dishes.Where(u => !u.IsDeleted).Select(dish => new DishDTO
             {
-                Id = u.Id,
-                Name = u.Name
+                Id = dish.Id,
+                Name = dish.Name,
+                Description = dish.Description,
+                ImagePath = dish.ImagePath,
+                Price = dish.Price,
+                Ingredients = dish.DishIngredients.Select(g => g.Ingredient.Name).ToList(),
+                TypeDishes = dish.DishTypeDishes.Select(g => g.DishType.Name).ToList()
             }).FirstOrDefault(u => u.Id == id);
 
             if (dish == null)

@@ -4,14 +4,12 @@ using Application.Interfaces;
 using Application.Queries.Auth;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Bogus.DataSets;
 using EFDataAccess;
 using Implementation.EFServices;
+using Implementation.Services.Exstensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -35,17 +33,7 @@ namespace Implementation.Services.Queriess.Auth
 
         public string Execute(LoginDTO search)
         {
-            var user =  _context.Users.Where(u => !u.IsDeleted && u.IsActived && u.Email == search.Email && u.Password == search.Password).Include(r => r.Role).ProjectTo<UserDTO>(_mapper.ConfigurationProvider).Select(u => new UserDTO
-            {
-                Id = u.Id,
-                FirstName = u.FirstName,
-                LastName = u.LastName,
-                Email = u.Email,
-                IsActived = u.IsActived,
-                ImagePath = u.ImagePath,
-                IsDeleted = u.IsDeleted,
-                Role = u.Role
-            }).FirstOrDefault();
+            var user =  _context.Users.Where(u => !u.IsDeleted && u.IsActived && u.Email == search.Email).Include(r => r.Role).ProjectTo<UserDTO>(_mapper.ConfigurationProvider).FirstOrDefault();
 
             if (user == null)
             {
@@ -56,24 +44,9 @@ namespace Implementation.Services.Queriess.Auth
             {
                 throw new PasswordNotValidException();
             }
-            var a = _hasher.HashPassword(search.Password);
 
-            var tokenHandler = new JwtSecurityTokenHandler();
-            string key = _config.GetSection("JwtKey").Value;
-            var keyBytes = Encoding.ASCII.GetBytes(key);
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim("id", user.Id.ToString()),
-                    new Claim(ClaimTypes.Email, user.Email),
-                    new Claim(ClaimTypes.GivenName, $"{user.FirstName} {user.LastName}"),
-                }),
-                Expires = DateTime.UtcNow.AddDays(7),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(keyBytes), SecurityAlgorithms.HmacSha256Signature)
-            };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
+            var getJwtToken = _config.GetJwtToken(user);
+            return getJwtToken;
         }
     }
 }

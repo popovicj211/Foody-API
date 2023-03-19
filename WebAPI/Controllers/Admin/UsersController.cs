@@ -33,7 +33,7 @@ namespace WebAPI.Controllers.Admin
             _context = context;
         }
 
-        // GET: api/<UserControllers>
+        // GET: api/admin/<UserControllers>
         [HttpGet]
         public ActionResult<IEnumerable<UserDTO>> Get([FromQuery] BaseSearchRequest request)
         {
@@ -48,7 +48,7 @@ namespace WebAPI.Controllers.Admin
             }
         }
 
-        // GET api/<UserControllers>/5
+        // GET api/admin/<UserControllers>/5
         [HttpGet("{id}")]
         public ActionResult<IEnumerable<UserDTO>> Get(int id)
         {
@@ -67,10 +67,10 @@ namespace WebAPI.Controllers.Admin
             }
         }
 
-        // POST api/<UserControllers>
+        // POST api/admin/<UserControllers>
         [HttpPost]
         [Obsolete]
-        public ActionResult Post([FromBody] UserDTO request)
+        public ActionResult Post([FromForm] UserDTO request)
         {
             var validator = new AddUserFluentValidator(_context);
             var errors = validator.Validate(request);
@@ -90,10 +90,10 @@ namespace WebAPI.Controllers.Admin
             }
         }
 
-        // PUT api/<UserControllers>/5
+        // PUT api/admin/<UserControllers>/5
         [HttpPut("{id}")]
         [Obsolete]
-        public ActionResult Put(int id, [FromBody] UserDTO request)
+        public ActionResult Put(int id, [FromForm] UserDTO request)
         {
             var validator = new UpdateUserFluentValidator(_context, id);
             var errors = validator.Validate(request);
@@ -103,6 +103,7 @@ namespace WebAPI.Controllers.Admin
             }
             try
             {
+                request.Id = id;
                 _updateUserCommand.Execute(request);
                 return NoContent();
             }
@@ -116,7 +117,7 @@ namespace WebAPI.Controllers.Admin
             }
         }
 
-        // DELETE api/<UserControllers>/5
+        // DELETE api/admin/<UserControllers>/5
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {

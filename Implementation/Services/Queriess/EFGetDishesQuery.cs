@@ -5,35 +5,42 @@ using Application.Searches;
 using AutoMapper.QueryableExtensions;
 using AutoMapper;
 using Implementation.EFServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using EFDataAccess;
 using Application.Helpers;
 using Microsoft.EntityFrameworkCore;
+using Application.Exceptions;
+using Bogus.DataSets;
 
 namespace Implementation.Services.Queriess
 {
     public class EFGetDishesQuery : BaseService, IGetDishesQuery
     {
         private readonly IMapper _mapper;
+        private IngredientDTO child;
+
         public EFGetDishesQuery(DBContext context, IMapper mapper) : base(context)
         {
             _mapper = mapper;
         }
 
-        public PagedResponse<DishDTO> Execute(BaseSearchRequest request)
+        public PagedResponse<DishDTO>? Execute(BaseSearchRequest request)
         {
-            var dieshes = _context.Dishes.AsQueryable();
+            var dishes = this._context.Dishes.AsQueryable();
 
-            return dieshes.Where(d => !d.IsDeleted).ProjectTo<DishDTO>(_mapper.ConfigurationProvider).Select(dish => new DishDTO
+            if (!dishes.Any())
+            {
+                throw new EntityNotFoundException("Dishes");
+            }
+
+            return dishes.Include(d => d.DishIngredients).ThenInclude(d => d.Ingredient).Where(d => !d.IsDeleted).Select(dish => new DishDTO
             {
                 Id = dish.Id,
                 Name = dish.Name,
                 Description = dish.Description,
-                ImagePath = dish.ImagePath
+                ImagePath = dish.ImagePath,
+                Price = dish.Price,
+                Ingredients = dish.DishIngredients.Select(g => g.Ingredient.Name).ToList(),
+                TypeDishes = dish.DishTypeDishes.Select(g => g.DishType.Name).ToList(),
             }).Paginate(request.PerPage, request.Page);
         }
     }

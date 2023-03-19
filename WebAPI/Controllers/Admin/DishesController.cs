@@ -44,9 +44,10 @@ namespace WebAPI.Controllers.Admin
                 var dishes = _getDishesQuery.Execute(request);
                 return Ok(dishes);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return StatusCode(500, "Server error, try later");
+                // return StatusCode(500, "Server error, try later");
+                return StatusCode(500, e);
             }
         }
 
@@ -72,7 +73,7 @@ namespace WebAPI.Controllers.Admin
         // POST api/<DishesController>
         [HttpPost]
         [Obsolete]
-        public ActionResult Post([FromBody] DishDTO request)
+        public async Task<ActionResult> Post([FromForm] DishDTO request)
         {
             var validator = new DishFluentValidator(_context);
             var errors = validator.Validate(request);
@@ -82,8 +83,8 @@ namespace WebAPI.Controllers.Admin
             }
             try
             {
-                _addDishCommand.Execute(request);
-                return StatusCode(201, "Dish is succefuly create.");
+               await _addDishCommand.Execute(request);
+                return StatusCode(201, "Dish is succesfully create.");
             }
 
             catch (Exception)
@@ -95,7 +96,7 @@ namespace WebAPI.Controllers.Admin
         // PUT api/<DishesController>/5
         [HttpPut("{id}")]
         [Obsolete]
-        public ActionResult Put(int id, [FromBody] DishDTO request)
+        public ActionResult Put(int id, [FromForm] DishDTO request)
         {
             var validator = new UpdateDishFluentValidator(_context, id);
             var errors = validator.Validate(request);

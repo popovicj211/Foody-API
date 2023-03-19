@@ -22,6 +22,8 @@ using Implementation.Services.Queriess;
 using Application.FileUpload;
 using Application.Queries.Auth;
 using Implementation.Services.Queriess.Auth;
+using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI
 {
@@ -39,6 +41,9 @@ namespace WebAPI
 
             services.AddCors();
             services.AddAutoMapper(typeof(ConfigurationMapping));
+            services.AddAutoMapper(typeof(DishConfigurationMapping));
+
+            services.AddMvc();
 
             services.AddControllers();
 
@@ -50,13 +55,25 @@ namespace WebAPI
                     )
                 );
 
-            services.AddSwaggerGen(c => { //<-- NOTE 'Add' instead of 'Configure'
+            services.AddControllers()
+                 .AddJsonOptions(options =>
+                 {
+                     options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+                     options.JsonSerializerOptions.PropertyNamingPolicy = null;
+                 });
+
+
+
+            services.AddSwaggerGen(c =>
+            { //<-- NOTE 'Add' instead of 'Configure'
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title = "FoodyAPI",
                     Version = "v1"
                 });
             });
+
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddTransient<ILoginUserQuery, EFLoginUserQuery>();
             services.AddTransient<IRegisterUserQuery, EFRegisterUserQuery>();
@@ -102,6 +119,18 @@ namespace WebAPI
             services.AddTransient<IDeleteCommentCommand, EFDeleteCommentCommand>();
             services.AddTransient<IGetCommentQuery, EFGetCommentQuery>();
             services.AddTransient<IGetCommentQuery, EFGetCommentQuery>();
+
+            services.AddTransient<IAddOrderItemCommand, EFAddOrderItemCommand>();
+            services.AddTransient<IDeleteOrderItemCommand, EFDeleteOrderItemCommand>();
+
+            services.AddTransient<IAddDishIngredientCommand, EFAddDishIngredientCommand>();
+            services.AddTransient<IDeleteDishIngredientCommand, EFDeleteDishIngredientCommand>();
+
+            services.AddTransient<IAddDishTypeDishCommand, EFAddDishTypeDishCommand>();
+            services.AddTransient<IDeleteDishTypeDishCommand, EFDeleteDishTypeDishCommand>();
+
+            services.AddTransient<IAddDishCommentCommand, EFAddDishCommentCommand>();
+            services.AddTransient<IAddDishCommentCommand, EFAddDishCommentCommand>();
 
             services.AddSingleton<IFIleService, FileUploadService>();
 
@@ -157,11 +186,13 @@ namespace WebAPI
             }
 
 
+            
             app.UseHttpsRedirection();
 
-            app.UseRouting();
+           app.UseRouting();
 
-         //   app.UseAuthorization();
+        //    app.UseMvc();
+            //   app.UseAuthorization();
             app.UseStaticFiles();
 
             app.UseSwagger();
@@ -173,10 +204,10 @@ namespace WebAPI
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "FoodyAPI V1");
             });
 
-             app.UseEndpoints(endpoints =>
-             {
-                 endpoints.MapControllers();
-             });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }

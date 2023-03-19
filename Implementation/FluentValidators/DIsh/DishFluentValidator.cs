@@ -26,9 +26,10 @@ namespace Implementation.FluentValidators.DIsh
                 .WithMessage("Name address already exists.");
 
 
-            RuleFor(u => u.ImagePath)
+            RuleFor(u => u.Image)
                 .NotEmpty()
                 .WithMessage("Image is required.");
+                 
 
             RuleFor(u => u.Description)
                 .NotEmpty()

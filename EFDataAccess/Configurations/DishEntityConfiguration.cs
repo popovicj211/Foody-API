@@ -21,7 +21,6 @@ namespace EFDataAccess.Configurations
             builder.Property(p => p.Id).ValueGeneratedOnAdd();
             builder.Property(r => r.Name).IsRequired().HasColumnType("nvarchar(40)");
             builder.Property(r => r.ImagePath).IsRequired(false).HasDefaultValueSql(null);
-            builder.Property(r => r.ImageFullPath).IsRequired(false).HasDefaultValueSql(null);
             builder.Property(r => r.Description).HasColumnType("ntext");
             builder.Property(r => r.Price).IsRequired().HasPrecision(11,2).HasColumnType("decimal(11,2)");
             builder.Property(r => r.CreatedAt).HasDefaultValueSql("GETDATE()");

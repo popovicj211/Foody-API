@@ -22,21 +22,20 @@ namespace Implementation.Services.Commands
             _mapper = mapper;
             _fileService = fileService;
         }
-        public async void Execute(DishDTO request)
+        public async Task Execute(DishDTO request)
         {
-            var (Server, FilePath) = await _fileService.Upload(request.Image);
+            var (Server, FilePath) = await this._fileService.Upload(request.Image);
 
             var mappingToDto = _mapper.Map<DishEntity>(new DishDTO
             {
                 Name = request.Name,
-                ImagePath = FilePath,
+                ImagePath = Server,
                 Description = request.Description,
-                Price = request.Price,
-                
+                Price = request.Price
             });
 
-            _context.Dishes.Add(mappingToDto);
-            _context.SaveChanges();
+           await this._context.Dishes.AddAsync(mappingToDto);
+           await this._context.SaveChangesAsync();
         }
     }
 }

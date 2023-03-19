@@ -24,7 +24,7 @@ namespace Implementation.FluentValidators.User
               .WithMessage("Password is required.")
               .MinimumLength(7)
               .WithMessage("Password must be at least 7 characters long.")
-              .Matches(new Regex("/^(?=.*[a-z])(?=.*[A-Z])(?=.*[\\d]).{7,}$/"))
+              .Matches(new Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{7,}$"))
               .WithMessage("Password is not valid, please enter at least one digits, lower and upper characters");
         }
     }

@@ -72,7 +72,7 @@ namespace WebAPI.Controllers.Admin
         // POST api/<IngredientsControllers>
         [HttpPost]
         [Obsolete]
-        public ActionResult Post([FromBody] IngredientDTO request)
+        public ActionResult Post([FromForm] IngredientDTO request)
         {
             var validator = new IngredientFluentValidator(_context);
             var errors = validator.Validate(request);
@@ -95,7 +95,7 @@ namespace WebAPI.Controllers.Admin
         // PUT api/<IngredientsControllers>/5
         [HttpPut("{id}")]
         [Obsolete]
-        public ActionResult Put(int id, [FromBody] IngredientDTO request)
+        public ActionResult Put(int id, [FromForm] IngredientDTO request)
         {
             var validator = new UpdateIngredientFluentValidator(_context, id);
             var errors = validator.Validate(request);

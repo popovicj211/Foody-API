@@ -8,6 +8,7 @@ using Azure.Core;
 using Domain.Entities;
 using EFDataAccess;
 using Implementation.EFServices;
+using Implementation.Services.Exstensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -46,31 +47,15 @@ namespace Implementation.Services.Queriess.Auth
                 LastName = request.LastName,
                 Username = request.Username,
                 Email = request.Email,
-                Password = _hasher.HashPassword(request.Password),
-                RoleId = request.RoleId,
+                Password = _hasher.HashPassword(request.Password)
             });
 
             _context.Users.Add(mappingToDto);
             _context.SaveChanges();
 
+            var getJwtToken = _config.GetJwtToken(request);
 
-            var tokenHandler = new JwtSecurityTokenHandler();
-            string key = _config.GetSection("JwtKey").Value;
-            var keyBytes = Encoding.ASCII.GetBytes(key);
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                    new Claim("id", mappingToDto.Id.ToString()),
-                    new Claim(ClaimTypes.Email, mappingToDto.Email),
-                    new Claim(ClaimTypes.GivenName, $"{mappingToDto.FirstName} {mappingToDto.LastName}"),
-                }),
-                Expires = DateTime.UtcNow.AddDays(7),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(keyBytes), SecurityAlgorithms.HmacSha256Signature)
-            };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-
-            return tokenHandler.WriteToken(token);
+            return getJwtToken;
         }
     }
  }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands
 {
-    public interface IAddOrderItemCommand : ICommand<OrderItemDTO>
+    public interface IAddOrderItemCommand : ICommand<List<OrderItemDTO>>
     {
     }
 }

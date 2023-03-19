@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands
 {
-    public interface IAddDishCommand : ICommand<DishDTO>
+    public interface IAddDishCommand : ICommandAsync<DishDTO>
     {
     }
 }

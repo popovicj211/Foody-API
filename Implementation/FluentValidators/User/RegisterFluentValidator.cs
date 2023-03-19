@@ -33,7 +33,7 @@ namespace Implementation.FluentValidators.User
                 .WithMessage("Firstname must be at least 3 characters long.")
                 .MaximumLength(30)
                 .WithMessage("Firstname can't be longer than 30 characters.")
-                .Matches(new Regex("/^[A-Z][a-z]+(\\s[A-Z][a-z]+)*$/"))
+                .Matches(new Regex("^[A-Z][a-z]{2,15}(\\s[A-Z][a-z]{2,15})*$"))
                 .WithMessage("First name must start with capital letter.");
 
             RuleFor(u => u.LastName)
@@ -43,7 +43,7 @@ namespace Implementation.FluentValidators.User
                 .WithMessage("Lastname must be at least 3 characters long.")
                 .MaximumLength(30)
                 .WithMessage("Lastname can't be longer than 30 characters.")
-                .Matches(new Regex("^[A-Z][a-z]+(\\s[A-Z][a-z]+)*$"))
+                .Matches(new Regex("^[A-Z][a-z]{2,15}(\\s[A-Z][a-z]{2,15})*$"))
                 .WithMessage("Last name must start with capital letter.");
 
             RuleFor(u => u.Username)
@@ -53,8 +53,8 @@ namespace Implementation.FluentValidators.User
                 .WithMessage("Username must be at least 5 characters long.")
                 .MaximumLength(25)
                 .WithMessage("Username can't be longer than 25 characters.")
-                .Matches(new Regex("/^[\\w\\-\\@\\+\\?\\!\\.]{5,25}$/"))
-                .WithMessage("Username must start with capital letter.")
+                .Matches(new Regex("^[a-z][a-z0-9]{4,25}$"))
+                .WithMessage("Username must start with lower letter and have lower letters and digits.")
                 .Must(BeUniqueUsernameInDatabase)
                 .WithMessage("Username address already exists.");
 
@@ -63,7 +63,7 @@ namespace Implementation.FluentValidators.User
                 .WithMessage("Password is required.")
                 .MinimumLength(7)
                 .WithMessage("Password must be at least 7 characters long.")
-                .Matches(new Regex("/^(?=.*[a-z])(?=.*[A-Z])(?=.*[\\d]).{7,}$/"))
+                .Matches(new Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{7,}$"))
                 .WithMessage("Password is not valid, please enter at least one digits, lower and upper characters");
         }
 

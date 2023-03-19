@@ -26,6 +26,7 @@ namespace Application.FileUpload
               {
                   ".jpg",
                   ".jpeg",
+                  ".JPG",
                   ".png",
                   ".gif"
               };

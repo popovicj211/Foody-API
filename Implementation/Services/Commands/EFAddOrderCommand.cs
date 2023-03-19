@@ -4,6 +4,7 @@ using AutoMapper;
 using Domain.Entities;
 using EFDataAccess;
 using Implementation.EFServices;
+using Implementation.Services.Exstensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,15 +22,29 @@ namespace Implementation.Services.Commands
         }
         public void Execute(OrderDTO request)
         {
-            var mappingToDto = _mapper.Map<OrderEntity>(new OrderDTO
+            var orderItems = request.OrderItems;
+            var dishIds = orderItems.Where(item => item.DishId > 0).Select(item => item.DishId);
+            var dishes = this._context.Dishes.Where(dish => dishIds.Contains(dish.Id)).ToList();
+
+            var mappingToOrderEntity = _mapper.Map<OrderEntity>(new OrderDTO
             {
-                TotalPrice = request.TotalPrice,
+                TotalPrice = request.OrderItems.Where(d => d.DishId > 0).Sum(orderItem => ((decimal)(dishes.FirstOrDefault(dish => dish.Id == orderItem.DishId).Price)).Total(orderItem.Qty)),
                 Date = DateTime.Now,
                 UserId = request.UserId
             });
 
-            _context.Orders.Add(mappingToDto);
-            _context.SaveChanges();
+            this._context.Orders.Add(mappingToOrderEntity);
+            this._context.SaveChanges();
+
+            var orderItemsEntities = request.OrderItems.Select(orderItem => new OrderItemEntity
+            {
+                DishId = orderItem.DishId,
+                Qty = orderItem.Qty,
+                OrderId = orderItem.OrderId
+            }).ToList();
+
+            this._context.OrderItems.AddRange(orderItemsEntities);
+            this._context.SaveChanges();
         }
     }
 }
