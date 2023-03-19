@@ -5,11 +5,13 @@ using Application.Exceptions;
 using Application.Queries;
 using Application.Queries.User;
 using Application.Searches;
+using Domain.Entities;
 using EFDataAccess;
 using Implementation.FluentValidators.DIsh;
 using Implementation.FluentValidators.User;
 using Implementation.Formatters;
 using Microsoft.AspNetCore.Mvc;
+using WebAPI.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -37,6 +39,7 @@ namespace WebAPI.Controllers.Admin
 
         // GET: api/<DishesController>
         [HttpGet]
+
         public ActionResult<IEnumerable<DishDTO>> Get([FromQuery] BaseSearchRequest request)
         {
             try
@@ -46,8 +49,7 @@ namespace WebAPI.Controllers.Admin
             }
             catch (Exception e)
             {
-                // return StatusCode(500, "Server error, try later");
-                return StatusCode(500, e);
+                 return StatusCode(500, "Server error, try later");
             }
         }
 

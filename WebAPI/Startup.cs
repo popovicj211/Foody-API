@@ -47,8 +47,6 @@ namespace WebAPI
 
             services.AddControllers();
 
-            //  services.AddDbContext<DBContext>();
-
             services.AddDbContext<DBContext>(
                 options => options.UseSqlServer(
                     this.Configuration.GetConnectionString("DBConnection")
@@ -74,64 +72,51 @@ namespace WebAPI
             });
 
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
-
             services.AddTransient<ILoginUserQuery, EFLoginUserQuery>();
             services.AddTransient<IRegisterUserQuery, EFRegisterUserQuery>();
-
             services.AddTransient<IAddUserCommand, EFAddUserCommand>();
             services.AddTransient<IUpdateUserCommand, EFUpdateUserCommand>();
             services.AddTransient<IDeleteUserCommand, EFDeleteUserCommand>();
             services.AddTransient<IGetUserQuery, EFGetUserQuery>();
             services.AddTransient<IGetUsersQuery, EFGetUsersQuery>();
-
             services.AddTransient<IAddIngredientCommand, EFAddIngredientCommand>();
             services.AddTransient<IUpdateIngredientCommand, EFUpdateIngredientCommand>();
             services.AddTransient<IDeleteIngedientCommand, EFDeleteIntergrientCommand>();
             services.AddTransient<IGetIngredientQuery, EFGetIngredientQuery>();
             services.AddTransient<IGetIngredientsQuery, EFGetIngredientsQuery>();
-
             services.AddTransient<IAddDishTypeCommand, EFAddDishTypeCommand>();
             services.AddTransient<IUpdateDishTypeCommand, EFUpdateDishTypeCommand>();
             services.AddTransient<IDeleteDishTypeCommand, EFDeleteDishTypeCommand>();
             services.AddTransient<IGetDishTypeQuery, EFGetDishTypeQuery>();
             services.AddTransient<IGetDishTypesQuery, EFGetDishTypesQuery>();
-
             services.AddTransient<IAddDishCommand, EFAddDishCommand>();
             services.AddTransient<IUpdateDishCommand, EFUpdateDishCommand>();
             services.AddTransient<IDeleteDishCommand, EFDeleteDishCommand>();
             services.AddTransient<IGetDishQuery, EFGetDishQuery>();
             services.AddTransient<IGetDishesQuery, EFGetDishesQuery>();
-
             services.AddTransient<IAddOrderCommand, EFAddOrderCommand>();
             services.AddTransient<IUpdateOrderCommand, EFUpdateOrderCommand>();
             services.AddTransient<IDeleteOrderCommand, EFDeleteOrderCommand>();
             services.AddTransient<IGetOrderQuery, EFGetOrderQuery>();
             services.AddTransient<IGetOrdersQuery, EFGetOrdersQuery>();
-
             services.AddTransient<IAddContactCommand, EFAddContactCommand>();
             services.AddTransient<IUpdateContactCommand, EFUpdateContactCommand>();
             services.AddTransient<IDeleteContactCommand, EFDeleteContactCommand>();
             services.AddTransient<IGetContactQuery, EFGetContactQuery>();
             services.AddTransient<IGetContactsQuery, EFGetContactsQuery>();
-
             services.AddTransient<IAddCommentCommand, EFAddCommentCommand>();
             services.AddTransient<IUpdateCommentCommand, EFUpdateCommentCommand>();
             services.AddTransient<IDeleteCommentCommand, EFDeleteCommentCommand>();
             services.AddTransient<IGetCommentQuery, EFGetCommentQuery>();
             services.AddTransient<IGetCommentQuery, EFGetCommentQuery>();
-
             services.AddTransient<IAddOrderItemCommand, EFAddOrderItemCommand>();
             services.AddTransient<IDeleteOrderItemCommand, EFDeleteOrderItemCommand>();
-
             services.AddTransient<IAddDishIngredientCommand, EFAddDishIngredientCommand>();
             services.AddTransient<IDeleteDishIngredientCommand, EFDeleteDishIngredientCommand>();
-
             services.AddTransient<IAddDishTypeDishCommand, EFAddDishTypeDishCommand>();
             services.AddTransient<IDeleteDishTypeDishCommand, EFDeleteDishTypeDishCommand>();
-
             services.AddTransient<IAddDishCommentCommand, EFAddDishCommentCommand>();
             services.AddTransient<IAddDishCommentCommand, EFAddDishCommentCommand>();
-
             services.AddSingleton<IFIleService, FileUploadService>();
 
             services.AddSingleton

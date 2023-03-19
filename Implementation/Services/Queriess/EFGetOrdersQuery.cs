@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EFDataAccess;
 using Application.Helpers;
+using Microsoft.EntityFrameworkCore;
 
 namespace Implementation.Services.Queriess
 {
@@ -27,11 +28,14 @@ namespace Implementation.Services.Queriess
         {
             var orders = _context.Orders.AsQueryable();
 
-            return orders.Where(d => !d.IsDeleted).ProjectTo<OrderDTO>(_mapper.ConfigurationProvider).Select(u => new OrderDTO
+            return orders.Where(d => !d.IsDeleted).Include(d => d.OrderItems).ProjectTo<OrderDTO>(_mapper.ConfigurationProvider).Select(u => new OrderDTO
             {
                 Id = u.Id,
+                Dishes = u.OrderItems.Select(d => d.Dish).ToList(),
                 TotalPrice = u.TotalPrice,
-                Date = u.Date
+                Date = u.Date,
+                User = u.User,
+                Quantities = u.OrderItems.Select(d => d.Qty).ToList(),
             }).Paginate(request.PerPage, request.Page);
         }
     }

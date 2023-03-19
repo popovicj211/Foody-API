@@ -7,6 +7,7 @@ using EFDataAccess;
 using Implementation.FluentValidators.User;
 using Implementation.Formatters;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -46,6 +47,9 @@ namespace WebAPI.Controllers
                     .Response
                     .Cookies
                     .Append("token", token, new CookieOptions { HttpOnly = true });
+
+                if (token == null)
+                    return Unauthorized();
 
                 return Ok(new { message = "You have succesfully logged in.", token });
             }
