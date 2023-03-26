@@ -15,10 +15,12 @@ namespace Implementation.Services.Commands
     public class EFUpdateContactCommand : BaseService, IUpdateContactCommand
     {
         private readonly IMapper _mapper;
+
         public EFUpdateContactCommand(DBContext context, IMapper mapper) : base(context)
         {
-            _mapper = mapper;
+            this._mapper = mapper;
         }
+
         public void Execute(ContactDTO request)
         {
             var contact = _context.Contacts.FirstOrDefault(u => u.Id == request.Id);

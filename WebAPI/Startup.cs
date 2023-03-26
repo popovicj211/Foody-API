@@ -1,10 +1,6 @@
-﻿using Application.Commands.User;
-using Application.Interfaces;
-using Application.Queries.User;
+﻿using Application.Interfaces;
 using EFDataAccess;
 using Implementation.AutoMapper;
-using Implementation.Commands.User;
-using Implementation.Services.Queriess.User;
 using Microsoft.EntityFrameworkCore;
 using System.Text;
 using WebAPI.Email;
@@ -14,14 +10,11 @@ using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Cryptography;
 using WebAPI.Hashing;
-using System.Reflection;
 using Application.Commands;
 using Implementation.Services.Commands;
 using Application.Queries;
 using Implementation.Services.Queriess;
 using Application.FileUpload;
-using Application.Queries.Auth;
-using Implementation.Services.Queriess.Auth;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -73,7 +66,7 @@ namespace WebAPI
 
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<ILoginUserQuery, EFLoginUserQuery>();
-            services.AddTransient<IRegisterUserQuery, EFRegisterUserQuery>();
+            services.AddTransient<IRegisterUserCommand, EFRegisterUserCommand>();
             services.AddTransient<IAddUserCommand, EFAddUserCommand>();
             services.AddTransient<IUpdateUserCommand, EFUpdateUserCommand>();
             services.AddTransient<IDeleteUserCommand, EFDeleteUserCommand>();

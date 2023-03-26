@@ -15,10 +15,12 @@ namespace Implementation.Services.Commands
     public class EFUpdateOrderItemCommand : BaseService, IUpdateOrderItemCommand
     {
         private readonly IMapper _mapper;
+
         public EFUpdateOrderItemCommand(DBContext context, IMapper mapper) : base(context)
         {
-            _mapper = mapper;
+            this._mapper = mapper;
         }
+
         public void Execute(OrderItemDTO request)
         {
             var orderItem = _context.OrderItems.FirstOrDefault(u => u.Id == request.Id);

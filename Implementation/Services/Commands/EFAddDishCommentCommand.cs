@@ -6,11 +6,6 @@ using Domain.Entities;
 using EFDataAccess;
 using Implementation.EFServices;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Implementation.Services.Commands
 {
@@ -20,7 +15,7 @@ namespace Implementation.Services.Commands
 
         public EFAddDishCommentCommand(DBContext context, IMapper mapper) : base(context)
         {
-            _mapper = mapper;
+            this._mapper = mapper;
         }
 
         public void Execute(DishCommentDTO request)

@@ -2,14 +2,11 @@
 using Application.Exceptions;
 using Application.Helpers;
 using Application.Interfaces;
-using Application.Queries.Auth;
+using Application.Queries;
 using EFDataAccess;
 using Implementation.FluentValidators.User;
 using Implementation.Formatters;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WebAPI.Controllers
 {

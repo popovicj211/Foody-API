@@ -1,5 +1,4 @@
 ﻿using FluentValidation.Results;
-using System.Linq;
 
 namespace Implementation.Formatters
 {

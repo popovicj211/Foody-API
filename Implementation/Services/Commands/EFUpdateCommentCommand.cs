@@ -15,10 +15,12 @@ namespace Implementation.Services.Commands
     public class EFUpdateCommentCommand : BaseService, IUpdateCommentCommand
     {
         private readonly IMapper _mapper;
+
         public EFUpdateCommentCommand(DBContext context, IMapper mapper) : base(context)
         {
-            _mapper = mapper;
+            this._mapper = mapper;
         }
+
         public void Execute(CommentDTO request)
         {
             var comment = _context.Comments.FirstOrDefault(u => u.Id == request.Id);

@@ -1,25 +1,17 @@
 ﻿using Application.Commands;
 using Application.DataTransfer;
 using Application.Exceptions;
-using AutoMapper;
 using Domain.Entities;
 using EFDataAccess;
 using Implementation.EFServices;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Implementation.Services.Commands
 {
     public class EFDeleteDishIngredientCommand : BaseService, IDeleteDishIngredientCommand
     {
-        private readonly IMapper _mapper;
-        public EFDeleteDishIngredientCommand(DBContext context, IMapper mapper) : base(context)
+        public EFDeleteDishIngredientCommand(DBContext context) : base(context)
         {
-            _mapper = mapper;
         }
 
         public void Execute(DishIngredientDTO request)

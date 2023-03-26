@@ -1,4 +1,4 @@
-﻿using Application.Commands.User;
+﻿using Application.Commands;
 using Application.DataTransfer;
 using Application.Exceptions;
 using Application.Interfaces;
@@ -6,7 +6,7 @@ using AutoMapper;
 using EFDataAccess;
 using Implementation.EFServices;
 
-namespace Implementation.Commands.User
+namespace Implementation.Services.Commands
 {
     public class EFUpdateUserCommand : BaseService, IUpdateUserCommand
     {
@@ -15,14 +15,14 @@ namespace Implementation.Commands.User
 
         public EFUpdateUserCommand(DBContext context, IMapper mapper, IPasswordHashing hasher) : base(context)
         {
-            _mapper = mapper;
-            _hasher = hasher;
+            this._mapper = mapper;
+            this._hasher = hasher;
         }
 
         public void Execute(UserDTO request)
         {
             var user = _context.Users.FirstOrDefault(u => u.Id == request.Id);
-          //  SQL_Latin1_General_CP1_CI_AS
+            //  SQL_Latin1_General_CP1_CI_AS
             if (user == null)
             {
                 throw new EntityNotFoundException("User");
@@ -51,11 +51,11 @@ namespace Implementation.Commands.User
                 user.Username = request.Username;
             }
 
-            bool isPasswordSame = _hasher.ValidatePassword(request.Password, user.Password);
+            bool isPasswordSame = this._hasher.ValidatePassword(request.Password, user.Password);
 
             if (!isPasswordSame)
             {
-                user.Password = _hasher.HashPassword(request.Password);
+                user.Password = this._hasher.HashPassword(request.Password);
             }
 
             if (request.RoleId != 0)

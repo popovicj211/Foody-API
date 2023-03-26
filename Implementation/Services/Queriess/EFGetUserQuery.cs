@@ -1,18 +1,13 @@
 ﻿using Application.DataTransfer;
 using Application.Exceptions;
-using Application.Queries.User;
+using Application.Queries;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using EFDataAccess;
 using Implementation.EFServices;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Implementation.Services.Queriess.User
+namespace Implementation.Services.Queriess
 {
     public class EFGetUserQuery : BaseService, IGetUserQuery
     {

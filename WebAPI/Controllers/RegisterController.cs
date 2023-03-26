@@ -1,15 +1,10 @@
-﻿using Application.DataTransfer;
-using Application.Exceptions;
-using Application.Helpers;
+﻿using Application.Commands;
+using Application.DataTransfer;
 using Application.Interfaces;
-using Application.Queries.Auth;
 using EFDataAccess;
 using Implementation.FluentValidators.User;
 using Implementation.Formatters;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Hosting;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WebAPI.Controllers
 {
@@ -17,11 +12,11 @@ namespace WebAPI.Controllers
     [ApiController]
     public class RegisterController : ControllerBase
     {
-        private IRegisterUserQuery _registerUserCommand;
+        private IRegisterUserCommand _registerUserCommand;
         private IEmailSender _emailService;
         private readonly DBContext _context;
 
-        public RegisterController(DBContext context, IRegisterUserQuery registerUserCommand, IEmailSender emailService)
+        public RegisterController(DBContext context, IRegisterUserCommand registerUserCommand, IEmailSender emailService)
         {
             _registerUserCommand = registerUserCommand;
             _emailService = emailService;

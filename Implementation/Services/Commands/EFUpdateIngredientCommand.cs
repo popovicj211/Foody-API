@@ -15,10 +15,12 @@ namespace Implementation.Services.Commands
     public class EFUpdateIngredientCommand : BaseService, IUpdateIngredientCommand
     {
         private readonly IMapper _mapper;
+
         public EFUpdateIngredientCommand(DBContext context, IMapper mapper) : base(context)
         {
-            _mapper = mapper;
+            this._mapper = mapper;
         }
+
         public void Execute(IngredientDTO request)
         {
             var ingredient = _context.Ingredients.FirstOrDefault(u => u.Id == request.Id);

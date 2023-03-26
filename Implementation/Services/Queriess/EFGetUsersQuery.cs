@@ -1,21 +1,14 @@
 ﻿using Application.DataTransfer;
 using Application.Helpers;
 using Application.Pagination;
-using Application.Queries.User;
+using Application.Queries;
 using Application.Searches;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Azure.Core;
-using Domain.Entities;
 using EFDataAccess;
 using Implementation.EFServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Implementation.Services.Queriess.User
+namespace Implementation.Services.Queriess
 {
     public class EFGetUsersQuery : BaseService, IGetUsersQuery
     {

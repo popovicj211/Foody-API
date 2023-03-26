@@ -10,9 +10,10 @@ namespace Implementation.Services.Commands
     public class EFAddOrderItemCommand : BaseService, IAddOrderItemCommand
     {
         private readonly IMapper _mapper;
+
         public EFAddOrderItemCommand(DBContext context, IMapper mapper) : base(context)
         {
-            _mapper = mapper;
+            this._mapper = mapper;
         }
 
         public void Execute(List<OrderItemDTO> request)

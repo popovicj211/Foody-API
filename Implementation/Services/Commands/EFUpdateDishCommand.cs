@@ -17,11 +17,13 @@ namespace Implementation.Services.Commands
     {
         private readonly IMapper _mapper;
         private readonly IFIleService _fileService;
+
         public EFUpdateDishCommand(DBContext context, IMapper mapper, IFIleService fileService) : base(context)
         {
-            _mapper = mapper;
-            _fileService = fileService;
+            this._mapper = mapper;
+            this._fileService = fileService;
         }
+
         public async void Execute(DishDTO request)
         {
             var dish = _context.Dishes.FirstOrDefault(u => u.Id == request.Id);

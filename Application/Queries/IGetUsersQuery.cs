@@ -3,7 +3,7 @@ using Application.Interfaces;
 using Application.Pagination;
 using Application.Searches;
 
-namespace Application.Queries.User
+namespace Application.Queries
 {
     public interface IGetUsersQuery : IQuery<BaseSearchRequest, PagedResponse<UserDTO>>
     {

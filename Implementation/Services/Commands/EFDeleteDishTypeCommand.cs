@@ -1,23 +1,14 @@
 ﻿using Application.Commands;
-using Application.Commands.User;
 using Application.Exceptions;
-using AutoMapper;
 using EFDataAccess;
 using Implementation.EFServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Implementation.Services.Commands
 {
     public class EFDeleteDishTypeCommand : BaseService, IDeleteDishTypeCommand
     {
-        private readonly IMapper _mapper;
-        public EFDeleteDishTypeCommand(DBContext context, IMapper mapper) : base(context)
+        public EFDeleteDishTypeCommand(DBContext context) : base(context)
         {
-            _mapper = mapper;
         }
 
         public void Execute(int id)

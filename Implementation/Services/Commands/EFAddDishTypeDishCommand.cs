@@ -15,7 +15,7 @@ namespace Implementation.Services.Commands
 
         public EFAddDishTypeDishCommand(DBContext context, IMapper mapper) : base(context)
         {
-            _mapper = mapper;
+            this._mapper = mapper;
         }
 
         public void Execute(DishTypeDishDTO request)

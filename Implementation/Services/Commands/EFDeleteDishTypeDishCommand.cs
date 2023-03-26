@@ -6,21 +6,13 @@ using Domain.Entities;
 using EFDataAccess;
 using Implementation.EFServices;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Implementation.Services.Commands
 {
     public class EFDeleteDishTypeDishCommand : BaseService, IDeleteDishTypeDishCommand
     {
-        private readonly IMapper _mapper;
-        public EFDeleteDishTypeDishCommand(DBContext context, IMapper mapper) : base(context)
+        public EFDeleteDishTypeDishCommand(DBContext context) : base(context)
         {
-            _mapper = mapper;
         }
 
         public void Execute(DishTypeDishDTO request)
