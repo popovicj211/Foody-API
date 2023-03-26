@@ -27,15 +27,15 @@ namespace WebAPI.Email
         {
             var smtp = new SmtpClient
             {
-                Host = host,
-                Port = port,
+                Host = this.host,
+                Port = this.port,
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(from, password)
+                Credentials = new NetworkCredential(this.from, this.password)
             };
 
-            using (var message = new MailMessage(from, ToEmail)
+            using (var message = new MailMessage(this.from, ToEmail)
             {
                 Subject = Subject,
                 Body = Body

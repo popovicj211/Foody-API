@@ -5,13 +5,8 @@ using Application.Queries;
 using Application.Searches;
 using EFDataAccess;
 using Implementation.FluentValidators.DishType;
-using Implementation.FluentValidators.Ingredient;
 using Implementation.Formatters;
-using Implementation.Services.Commands;
-using Implementation.Services.Queriess;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WebAPI.Controllers.Admin
 {
@@ -25,14 +20,15 @@ namespace WebAPI.Controllers.Admin
         private IUpdateDishTypeCommand _updateDishTypeCommand;
         private IGetDishTypesQuery _getDishTypesQuery;
         private readonly DBContext _context;
+
         public DishTypesController(DBContext context, IAddDishTypeCommand addDishTypeCommand, IDeleteDishTypeCommand deleteDishTypeCommand, IGetDishTypeQuery getDishTypeQuery, IUpdateDishTypeCommand updateDishTypeCommand, IGetDishTypesQuery getDishTypesQuery)
         {
-            _addDishTypeCommand = addDishTypeCommand;
-            _deleteDishTypeCommand = deleteDishTypeCommand;
-            _getDishTypeQuery = getDishTypeQuery;
-            _updateDishTypeCommand = updateDishTypeCommand;
-            _getDishTypesQuery = getDishTypesQuery;
-            _context = context;
+            this._addDishTypeCommand = addDishTypeCommand;
+            this._deleteDishTypeCommand = deleteDishTypeCommand;
+            this._getDishTypeQuery = getDishTypeQuery;
+            this._updateDishTypeCommand = updateDishTypeCommand;
+            this._getDishTypesQuery = getDishTypesQuery;
+            this._context = context;
         }
 
         // GET: api/<DishTypesController>
@@ -41,7 +37,7 @@ namespace WebAPI.Controllers.Admin
         {
             try
             {
-                var dishTypes = _getDishTypesQuery.Execute(request);
+                var dishTypes = this._getDishTypesQuery.Execute(request);
                 return Ok(dishTypes);
             }
             catch (Exception)
@@ -56,7 +52,7 @@ namespace WebAPI.Controllers.Admin
         {
             try
             {
-                var dishType = _getDishTypeQuery.Execute(id);
+                var dishType = this._getDishTypeQuery.Execute(id);
                 return Ok(dishType);
             }
             catch (EntityNotFoundException)
@@ -74,7 +70,7 @@ namespace WebAPI.Controllers.Admin
         [Obsolete]
         public ActionResult Post([FromBody] DishTypeDTO request)
         {
-            var validator = new DishTypeFluentValidator(_context);
+            var validator = new DishTypeFluentValidator(this._context);
             var errors = validator.Validate(request);
             if (!errors.IsValid)
             {
@@ -82,7 +78,7 @@ namespace WebAPI.Controllers.Admin
             }
             try
             {
-                _addDishTypeCommand.Execute(request);
+                this._addDishTypeCommand.Execute(request);
                 return StatusCode(201, "Dish type is succefuly create.");
             }
 
@@ -97,7 +93,7 @@ namespace WebAPI.Controllers.Admin
         [Obsolete]
         public ActionResult Put(int id, [FromBody] DishTypeDTO request)
         {
-            var validator = new UpdateDishTypeFluentValidator(_context, id);
+            var validator = new UpdateDishTypeFluentValidator(this._context, id);
             var errors = validator.Validate(request);
             if (!errors.IsValid)
             {
@@ -105,7 +101,7 @@ namespace WebAPI.Controllers.Admin
             }
             try
             {
-                _updateDishTypeCommand.Execute(request);
+                this._updateDishTypeCommand.Execute(request);
                 return NoContent();
             }
             catch (EntityNotFoundException)
@@ -124,7 +120,7 @@ namespace WebAPI.Controllers.Admin
         {
             try
             {
-                _deleteDishTypeCommand.Execute(id);
+                this._deleteDishTypeCommand.Execute(id);
                 return StatusCode(204, "Data type is deleted");
             }
             catch (EntityNotFoundException)

@@ -1,7 +1,6 @@
 ﻿using Application.Commands;
 using Application.DataTransfer;
 using Application.Exceptions;
-using AutoMapper;
 using Domain.Entities;
 using EFDataAccess;
 using Implementation.EFServices;

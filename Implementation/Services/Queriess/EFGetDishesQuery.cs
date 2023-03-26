@@ -2,25 +2,22 @@
 using Application.Pagination;
 using Application.Queries;
 using Application.Searches;
-using AutoMapper.QueryableExtensions;
 using AutoMapper;
 using Implementation.EFServices;
 using EFDataAccess;
 using Application.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Application.Exceptions;
-using Bogus.DataSets;
 
 namespace Implementation.Services.Queriess
 {
     public class EFGetDishesQuery : BaseService, IGetDishesQuery
     {
         private readonly IMapper _mapper;
-        private IngredientDTO child;
 
         public EFGetDishesQuery(DBContext context, IMapper mapper) : base(context)
         {
-            _mapper = mapper;
+            this._mapper = mapper;
         }
 
         public PagedResponse<DishDTO>? Execute(BaseSearchRequest request)

@@ -1,12 +1,8 @@
 ﻿using Application.Commands;
 using Application.DataTransfer;
 using Application.Exceptions;
-using Application.Queries;
 using EFDataAccess;
-using Implementation.Services.Commands;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WebAPI.Controllers.Admin
 {
@@ -17,11 +13,12 @@ namespace WebAPI.Controllers.Admin
         private IAddDishIngredientCommand _addDishIngredientCommand;
         private IDeleteDishIngredientCommand _deleteDishIngredientCommand;
         private readonly DBContext _context;
+
         public DishIngredientsController(DBContext context, IAddDishIngredientCommand addDishIngredientCommand, IDeleteDishIngredientCommand deleteDishIngredientCommand)
         {
-            _addDishIngredientCommand = addDishIngredientCommand;
-            _deleteDishIngredientCommand = deleteDishIngredientCommand;
-             _context = context;
+            this._addDishIngredientCommand = addDishIngredientCommand;
+            this._deleteDishIngredientCommand = deleteDishIngredientCommand;
+            this._context = context;
         }
 
         // POST api/<DishIngredientsController>
@@ -30,7 +27,7 @@ namespace WebAPI.Controllers.Admin
         {
             try
             {
-                _addDishIngredientCommand.Execute(request);
+                this._addDishIngredientCommand.Execute(request);
                 return StatusCode(201);
             }
             catch (EntityNotFoundException e)
@@ -54,7 +51,7 @@ namespace WebAPI.Controllers.Admin
             try
             {
                 request.Id = id;
-                _deleteDishIngredientCommand.Execute(request);
+                this._deleteDishIngredientCommand.Execute(request);
                 return NoContent();
             }
             catch (EntityNotFoundException e)

@@ -7,27 +7,23 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using EFDataAccess;
 using Implementation.EFServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Implementation.Services.Queriess
 {
     public class EFGetCommentsQuery : BaseService, IGetCommentsQuery
     {
         private readonly IMapper _mapper;
+
         public EFGetCommentsQuery(DBContext context, IMapper mapper) : base(context)
         {
-            _mapper = mapper;
+            this._mapper = mapper;
         }
 
         public PagedResponse<CommentDTO> Execute(BaseSearchRequest request)
         {
             var comments = _context.Comments.AsQueryable();
 
-            return comments.Where(d => !d.IsDeleted).ProjectTo<CommentDTO>(_mapper.ConfigurationProvider).Select(u => new CommentDTO
+            return comments.Where(d => !d.IsDeleted).ProjectTo<CommentDTO>(this._mapper.ConfigurationProvider).Select(u => new CommentDTO
             {
                 Id = u.Id,
                 Content = u.Content,

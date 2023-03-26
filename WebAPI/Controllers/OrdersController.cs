@@ -1,11 +1,7 @@
-﻿using Application.Commands;
-using Application.DataTransfer;
+﻿using Application.DataTransfer;
 using Application.Queries;
 using Application.Searches;
-using EFDataAccess;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WebAPI.Controllers
 {
@@ -14,9 +10,10 @@ namespace WebAPI.Controllers
     public class OrdersController : ControllerBase
     {
         private IGetOrdersQuery _getOrdersQuery;
+
         public OrdersController( IGetOrdersQuery getOrdersQuery)
         {
-            _getOrdersQuery = getOrdersQuery;
+            this._getOrdersQuery = getOrdersQuery;
         }
 
         // GET: api/<OrdersController>
@@ -25,7 +22,7 @@ namespace WebAPI.Controllers
         {
             try
             {
-                var orders = _getOrdersQuery.Execute(request);
+                var orders = this._getOrdersQuery.Execute(request);
                 return Ok(orders);
             }
             catch (Exception)

@@ -19,16 +19,17 @@ namespace Implementation.Services.Queriess
     public class EFGetOrdersQuery : BaseService, IGetOrdersQuery
     {
         private readonly IMapper _mapper;
+
         public EFGetOrdersQuery(DBContext context, IMapper mapper) : base(context)
         {
-            _mapper = mapper;
+            this._mapper = mapper;
         }
 
         public PagedResponse<OrderDTO> Execute(BaseSearchRequest request)
         {
             var orders = _context.Orders.AsQueryable();
 
-            return orders.Where(d => !d.IsDeleted).Include(d => d.OrderItems).ProjectTo<OrderDTO>(_mapper.ConfigurationProvider).Select(u => new OrderDTO
+            return orders.Where(d => !d.IsDeleted).Include(d => d.OrderItems).ProjectTo<OrderDTO>(this._mapper.ConfigurationProvider).Select(u => new OrderDTO
             {
                 Id = u.Id,
                 Dishes = u.OrderItems.Select(d => d.Dish).ToList(),

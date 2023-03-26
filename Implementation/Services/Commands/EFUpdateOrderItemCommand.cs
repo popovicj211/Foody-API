@@ -4,11 +4,6 @@ using Application.Exceptions;
 using AutoMapper;
 using EFDataAccess;
 using Implementation.EFServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Implementation.Services.Commands
 {
@@ -29,13 +24,6 @@ namespace Implementation.Services.Commands
             {
                 throw new EntityNotFoundException("Order item");
             }
-
-            //if (order.Total != request.To)
-            //{
-            //    order.TotalPrice = request.TotalPrice;
-            //}
-
-         
 
             _context.SaveChanges();
         }

@@ -18,9 +18,9 @@ namespace WebAPI.Controllers
 
         public RegisterController(DBContext context, IRegisterUserCommand registerUserCommand, IEmailSender emailService)
         {
-            _registerUserCommand = registerUserCommand;
-            _emailService = emailService;
-            _context = context;
+            this._registerUserCommand = registerUserCommand;
+            this._emailService = emailService;
+            this._context = context;
         }
 
         // POST api/<RegisterController>
@@ -28,7 +28,7 @@ namespace WebAPI.Controllers
         [Obsolete]
         public ActionResult Register([FromForm] UserDTO request)
         {
-            var validator = new RegisterFluentValidator(_context);
+            var validator = new RegisterFluentValidator(this._context);
             var errors = validator.Validate(request);
             if (!errors.IsValid)
             {
@@ -37,11 +37,11 @@ namespace WebAPI.Controllers
 
             try
             {
-                var token = _registerUserCommand.Execute(request);
-                //_emailService.Body = "You have succcessfully registered.";
-                //_emailService.Subject = "Registration mail";
-                //_emailService.ToEmail = request.Email;
-                //_emailService.Send();
+                var token = this._registerUserCommand.Execute(request);
+                //this._emailService.Body = "You have succcessfully registered.";
+                //this._emailService.Subject = "Registration mail";
+                //this._emailService.ToEmail = request.Email;
+                //this._emailService.Send();
                 //EMAIL
 
                 HttpContext

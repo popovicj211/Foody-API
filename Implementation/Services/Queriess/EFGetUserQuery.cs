@@ -14,12 +14,12 @@ namespace Implementation.Services.Queriess
         private readonly IMapper _mapper;
         public EFGetUserQuery(DBContext context, IMapper mapper) : base(context)
         {
-            _mapper = mapper;
+            this._mapper = mapper;
         }
 
         public UserDTO Execute(int id)
         {
-            var user = _context.Users.Where(u => !u.IsDeleted && u.IsActived).Include(r => r.Role).ProjectTo<UserDTO>(_mapper.ConfigurationProvider).Select(u => new UserDTO
+            var user = _context.Users.Where(u => !u.IsDeleted && u.IsActived).Include(r => r.Role).ProjectTo<UserDTO>(this._mapper.ConfigurationProvider).Select(u => new UserDTO
             {
                 Id = u.Id,
                 FirstName = u.FirstName,

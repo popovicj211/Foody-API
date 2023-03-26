@@ -2,23 +2,18 @@
 using Application.Exceptions;
 using Application.Queries;
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using EFDataAccess;
 using Implementation.EFServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Implementation.Services.Queriess
 {
     public class EFGetDishQuery : BaseService, IGetDishQuery
     {
         private readonly IMapper _mapper;
+
         public EFGetDishQuery(DBContext context, IMapper mapper) : base(context)
         {
-            _mapper = mapper;
+            this._mapper = mapper;
         }
 
         public DishDTO Execute(int id)

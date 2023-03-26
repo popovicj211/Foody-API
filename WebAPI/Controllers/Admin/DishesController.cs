@@ -20,14 +20,15 @@ namespace WebAPI.Controllers.Admin
         private IUpdateDishCommand _updateDishCommand;
         private IGetDishesQuery _getDishesQuery;
         private readonly DBContext _context;
+
         public DishesController(DBContext context, IAddDishCommand addDishCommand, IDeleteDishCommand deleteDishCommand, IGetDishQuery getDishQuery, IUpdateDishCommand updateDishCommand, IGetDishesQuery getDishesQuery)
         {
-            _addDishCommand = addDishCommand;
-            _deleteDishCommand = deleteDishCommand;
-            _getDishQuery = getDishQuery;
-            _updateDishCommand = updateDishCommand;
-            _getDishesQuery = getDishesQuery;
-            _context = context;
+            this._addDishCommand = addDishCommand;
+            this._deleteDishCommand = deleteDishCommand;
+            this._getDishQuery = getDishQuery;
+            this._updateDishCommand = updateDishCommand;
+            this._getDishesQuery = getDishesQuery;
+            this._context = context;
         }
 
         // GET: api/<DishesController>
@@ -37,7 +38,7 @@ namespace WebAPI.Controllers.Admin
         {
             try
             {
-                var dishes = _getDishesQuery.Execute(request);
+                var dishes = this._getDishesQuery.Execute(request);
                 return Ok(dishes);
             }
             catch (Exception e)
@@ -52,7 +53,7 @@ namespace WebAPI.Controllers.Admin
         {
             try
             {
-                var dish = _getDishQuery.Execute(id);
+                var dish = this._getDishQuery.Execute(id);
                 return Ok(dish);
             }
             catch (EntityNotFoundException)
@@ -70,7 +71,7 @@ namespace WebAPI.Controllers.Admin
         [Obsolete]
         public async Task<ActionResult> Post([FromForm] DishDTO request)
         {
-            var validator = new DishFluentValidator(_context);
+            var validator = new DishFluentValidator(this._context);
             var errors = validator.Validate(request);
             if (!errors.IsValid)
             {
@@ -78,7 +79,7 @@ namespace WebAPI.Controllers.Admin
             }
             try
             {
-               await _addDishCommand.Execute(request);
+               await this._addDishCommand.Execute(request);
                 return StatusCode(201, "Dish is succesfully create.");
             }
 
@@ -93,7 +94,7 @@ namespace WebAPI.Controllers.Admin
         [Obsolete]
         public ActionResult Put(int id, [FromForm] DishDTO request)
         {
-            var validator = new UpdateDishFluentValidator(_context, id);
+            var validator = new UpdateDishFluentValidator(this._context, id);
             var errors = validator.Validate(request);
             if (!errors.IsValid)
             {
@@ -101,7 +102,7 @@ namespace WebAPI.Controllers.Admin
             }
             try
             {
-                _updateDishCommand.Execute(request);
+                this._updateDishCommand.Execute(request);
                 return NoContent();
             }
             catch (EntityNotFoundException)
@@ -120,7 +121,7 @@ namespace WebAPI.Controllers.Admin
         {
             try
             {
-                _deleteDishCommand.Execute(id);
+                this._deleteDishCommand.Execute(id);
                 return StatusCode(204, "Dish is deleted");
             }
             catch (EntityNotFoundException)

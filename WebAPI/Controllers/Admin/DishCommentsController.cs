@@ -1,12 +1,8 @@
 ﻿using Application.Commands;
 using Application.DataTransfer;
 using Application.Exceptions;
-using Azure.Core;
 using EFDataAccess;
-using Implementation.Services.Commands;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WebAPI.Controllers.Admin
 {
@@ -20,9 +16,9 @@ namespace WebAPI.Controllers.Admin
 
         public DishCommentsController(DBContext context, IAddDishCommentCommand addDishCommentCommand, IDeleteDishCommentCommand deleteDishCommentCommand)
         {
-            _addDishCommentCommand = addDishCommentCommand;
-            _deleteDishCommentCommand = deleteDishCommentCommand;
-            _context = context;
+            this._addDishCommentCommand = addDishCommentCommand;
+            this._deleteDishCommentCommand = deleteDishCommentCommand;
+            this._context = context;
         }
 
         // POST api/<DishCommentsController>
@@ -31,7 +27,7 @@ namespace WebAPI.Controllers.Admin
         {
             try
             {
-                _addDishCommentCommand.Execute(request);
+                this._addDishCommentCommand.Execute(request);
                 return StatusCode(201);
             }
             catch (EntityNotFoundException e)
@@ -55,7 +51,7 @@ namespace WebAPI.Controllers.Admin
             try
             {
                 request.Id = id;
-                _deleteDishCommentCommand.Execute(request);
+                this._deleteDishCommentCommand.Execute(request);
                 return NoContent();
             }
             catch (EntityNotFoundException e)

@@ -1,11 +1,4 @@
-﻿using Application.Searches;
-using Domain.Entities;
-using EFDataAccess;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EFDataAccess;
 
 namespace Implementation.EFServices
 {

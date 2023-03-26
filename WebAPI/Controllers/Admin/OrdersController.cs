@@ -4,12 +4,9 @@ using Application.Exceptions;
 using Application.Queries;
 using Application.Searches;
 using EFDataAccess;
-using Implementation.FluentValidators.Ingredient;
 using Implementation.FluentValidators.Order;
 using Implementation.Formatters;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WebAPI.Controllers.Admin
 {
@@ -23,14 +20,15 @@ namespace WebAPI.Controllers.Admin
         private IUpdateOrderCommand _updateOrderCommand;
         private IGetOrdersQuery _getOrdersQuery;
         private readonly DBContext _context;
+
         public OrdersController(DBContext context, IAddOrderCommand addOrderCommand, IDeleteOrderCommand deleteOrderCommand, IGetOrderQuery getOrderQuery, IUpdateOrderCommand updateOrderCommand, IGetOrdersQuery getOrdersQuery)
         {
-            _addOrderCommand = addOrderCommand;
-            _deleteOrderCommand = deleteOrderCommand;
-            _getOrderQuery = getOrderQuery;
-            _updateOrderCommand = updateOrderCommand;
-            _getOrdersQuery = getOrdersQuery;
-            _context = context;
+            this._addOrderCommand = addOrderCommand;
+            this._deleteOrderCommand = deleteOrderCommand;
+            this._getOrderQuery = getOrderQuery;
+            this._updateOrderCommand = updateOrderCommand;
+            this._getOrdersQuery = getOrdersQuery;
+            this._context = context;
         }
 
         // GET: api/<OrdersController>
@@ -39,7 +37,7 @@ namespace WebAPI.Controllers.Admin
         {
             try
             {
-                var orders = _getOrdersQuery.Execute(request);
+                var orders = this._getOrdersQuery.Execute(request);
                 return Ok(orders);
             }
             catch (Exception)
@@ -54,7 +52,7 @@ namespace WebAPI.Controllers.Admin
         {
             try
             {
-                var order = _getOrderQuery.Execute(id);
+                var order = this._getOrderQuery.Execute(id);
                 return Ok(order);
             }
             catch (EntityNotFoundException)
@@ -72,7 +70,7 @@ namespace WebAPI.Controllers.Admin
         [Obsolete]
         public ActionResult Post([FromBody] OrderDTO request)
         {
-            var validator = new OrderFluentValidator(_context);
+            var validator = new OrderFluentValidator(this._context);
             var errors = validator.Validate(request);
             if (!errors.IsValid)
             {
@@ -80,7 +78,7 @@ namespace WebAPI.Controllers.Admin
             }
             try
             {
-                _addOrderCommand.Execute(request);
+                this._addOrderCommand.Execute(request);
                 return StatusCode(201, "Order is succefuly create.");
             }
 
@@ -97,7 +95,7 @@ namespace WebAPI.Controllers.Admin
         {
             try
             {
-                _updateOrderCommand.Execute(request);
+                this._updateOrderCommand.Execute(request);
                 return NoContent();
             }
             catch (EntityNotFoundException)
@@ -116,7 +114,7 @@ namespace WebAPI.Controllers.Admin
         {
             try
             {
-                _deleteOrderCommand.Execute(id);
+                this._deleteOrderCommand.Execute(id);
                 return StatusCode(204, "Order is deleted");
             }
             catch (EntityNotFoundException)

@@ -4,14 +4,9 @@ using Application.Exceptions;
 using Application.Queries;
 using Application.Searches;
 using EFDataAccess;
-using FluentValidation;
-using Implementation.FluentValidators.DIsh;
 using Implementation.FluentValidators.Ingredient;
 using Implementation.Formatters;
-using Implementation.Services.Queriess;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WebAPI.Controllers.Admin
 {
@@ -25,14 +20,15 @@ namespace WebAPI.Controllers.Admin
         private IUpdateIngredientCommand _updateIngredientCommand;
         private IGetIngredientsQuery _getIngredientsQuery;
         private readonly DBContext _context;
+
         public IngredientsController(DBContext context, IAddIngredientCommand addIngredientCommand, IDeleteIngedientCommand deleteIngredientCommand, IGetIngredientQuery getDishQuery, IUpdateIngredientCommand updateIngredientCommand, IGetIngredientsQuery getIngedientsQuery)
         {
-            _addIngredientCommand = addIngredientCommand;
-            _deleteIngredientCommand = deleteIngredientCommand;
-            _getIngredientQuery = getDishQuery;
-            _updateIngredientCommand = updateIngredientCommand;
-            _getIngredientsQuery = getIngedientsQuery;
-            _context = context;
+            this._addIngredientCommand = addIngredientCommand;
+            this._deleteIngredientCommand = deleteIngredientCommand;
+            this._getIngredientQuery = getDishQuery;
+            this._updateIngredientCommand = updateIngredientCommand;
+            this._getIngredientsQuery = getIngedientsQuery;
+            this._context = context;
         }
 
         // GET: api/<IngredientsControllers>
@@ -41,7 +37,7 @@ namespace WebAPI.Controllers.Admin
         {
             try
             {
-                var ingredients = _getIngredientsQuery.Execute(request);
+                var ingredients = this._getIngredientsQuery.Execute(request);
                 return Ok(ingredients);
             }
             catch (Exception)
@@ -56,7 +52,7 @@ namespace WebAPI.Controllers.Admin
         {
             try
             {
-                var ingredient = _getIngredientQuery.Execute(id);
+                var ingredient = this._getIngredientQuery.Execute(id);
                 return Ok(ingredient);
             }
             catch (EntityNotFoundException)
@@ -74,7 +70,7 @@ namespace WebAPI.Controllers.Admin
         [Obsolete]
         public ActionResult Post([FromForm] IngredientDTO request)
         {
-            var validator = new IngredientFluentValidator(_context);
+            var validator = new IngredientFluentValidator(this._context);
             var errors = validator.Validate(request);
             if (!errors.IsValid)
             {
@@ -82,7 +78,7 @@ namespace WebAPI.Controllers.Admin
             }
             try
             {
-                _addIngredientCommand.Execute(request);
+                this._addIngredientCommand.Execute(request);
                 return StatusCode(201, "Ingredient is succefuly create.");
             }
 
@@ -97,7 +93,7 @@ namespace WebAPI.Controllers.Admin
         [Obsolete]
         public ActionResult Put(int id, [FromForm] IngredientDTO request)
         {
-            var validator = new UpdateIngredientFluentValidator(_context, id);
+            var validator = new UpdateIngredientFluentValidator(this._context, id);
             var errors = validator.Validate(request);
             if (!errors.IsValid)
             {
@@ -105,7 +101,7 @@ namespace WebAPI.Controllers.Admin
             }
             try
             {
-                _updateIngredientCommand.Execute(request);
+                this._updateIngredientCommand.Execute(request);
                 return NoContent();
             }
             catch (EntityNotFoundException)
@@ -124,7 +120,7 @@ namespace WebAPI.Controllers.Admin
         {
             try
             {
-                _deleteIngredientCommand.Execute(id);
+                this._deleteIngredientCommand.Execute(id);
                 return StatusCode(204, "Ingredient is deleted");
             }
             catch (EntityNotFoundException)

@@ -1,5 +1,4 @@
 ﻿using Application.Interfaces;
-using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -7,25 +6,6 @@ namespace WebAPI.Hashing
 {
     public class HashingPassword : IPasswordHashing
     {
-        //private string _key;
-        //public HashingPassword(string keyString)
-        //{
-        //    this._key = keyString;
-        //}
-        //public string Hash()
-        //{
-        //    byte[] salt = RandomNumberGenerator.GetBytes(128 / 8);
-        //    string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-        //        password: this._key,
-        //        salt: salt,
-        //        prf: KeyDerivationPrf.HMACSHA256,
-        //        iterationCount: 100000,
-        //        numBytesRequested: 256 / 8));
-
-        //    return hashed;
-        //}
-
-   
         private readonly RNGCryptoServiceProvider _randomService;
 
         private int _saltSize = 20;
@@ -124,6 +104,5 @@ namespace WebAPI.Hashing
         {
             _randomService?.Dispose();
         }
-
     }
 }

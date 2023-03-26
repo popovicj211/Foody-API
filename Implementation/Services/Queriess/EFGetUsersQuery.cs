@@ -15,14 +15,14 @@ namespace Implementation.Services.Queriess
         private readonly IMapper _mapper;
         public EFGetUsersQuery(DBContext context, IMapper mapper) : base(context)
         {
-            _mapper = mapper;
+            this._mapper = mapper;
         }
 
         public PagedResponse<UserDTO> Execute(BaseSearchRequest request)
         {
             var users = _context.Users.AsQueryable();
 
-            return users.Where(d => !d.IsDeleted).ProjectTo<UserDTO>(_mapper.ConfigurationProvider).Select(user => new UserDTO
+            return users.Where(d => !d.IsDeleted).ProjectTo<UserDTO>(this._mapper.ConfigurationProvider).Select(user => new UserDTO
             {
                 Id = user.Id,
                 Email = user.Email,

@@ -1,10 +1,7 @@
-﻿using Application.Commands;
-using Application.DataTransfer;
+﻿using Application.DataTransfer;
 using Application.Queries;
 using Application.Searches;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WebAPI.Controllers
 {
@@ -16,8 +13,7 @@ namespace WebAPI.Controllers
 
         public DishesController(IGetDishesQuery getDishesQuery)
         {
-            _getDishesQuery = getDishesQuery;
-  
+            this._getDishesQuery = getDishesQuery;
         }
 
         // GET: api/<DishesController>
@@ -26,7 +22,7 @@ namespace WebAPI.Controllers
         {
             try
             {
-                var dishes = _getDishesQuery.Execute(request);
+                var dishes = this._getDishesQuery.Execute(request);
                 return Ok(dishes);
             }
             catch (Exception)

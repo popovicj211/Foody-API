@@ -11,14 +11,15 @@ namespace Implementation.Services.Queriess
     public class EFGetContactQuery : BaseService, IGetContactQuery
     {
         private readonly IMapper _mapper;
+
         public EFGetContactQuery(DBContext context, IMapper mapper) : base(context)
         {
-            _mapper = mapper;
+            this._mapper = mapper;
         }
 
         public ContactDTO Execute(int id)
         {
-            var contact = _context.Contacts.Where(u => !u.IsDeleted).ProjectTo<ContactDTO>(_mapper.ConfigurationProvider).Select(u => new ContactDTO
+            var contact = _context.Contacts.Where(u => !u.IsDeleted).ProjectTo<ContactDTO>(this._mapper.ConfigurationProvider).Select(u => new ContactDTO
             {
                 Id = u.Id,
                 FullName = u.FullName,

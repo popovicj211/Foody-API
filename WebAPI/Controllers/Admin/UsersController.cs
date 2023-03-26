@@ -23,12 +23,12 @@ namespace WebAPI.Controllers.Admin
 
         public UsersController(DBContext context, IAddUserCommand addUserCommand, IDeleteUserCommand deleteUserCommand, IGetUserQuery getUserQuery, IUpdateUserCommand updateUserCommand, IGetUsersQuery getUsersQuery)
         {
-            _addUserCommand = addUserCommand;
-            _deleteUserCommand = deleteUserCommand;
-            _getUserQuery = getUserQuery;
-            _updateUserCommand = updateUserCommand;
-            _getUsersQuery = getUsersQuery;
-            _context = context;
+            this._addUserCommand = addUserCommand;
+            this._deleteUserCommand = deleteUserCommand;
+            this._getUserQuery = getUserQuery;
+            this._updateUserCommand = updateUserCommand;
+            this._getUsersQuery = getUsersQuery;
+            this._context = context;
         }
 
         // GET: api/admin/<UserControllers>
@@ -37,7 +37,7 @@ namespace WebAPI.Controllers.Admin
         {
             try
             {
-                var users = _getUsersQuery.Execute(request);
+                var users = this._getUsersQuery.Execute(request);
                 return Ok(users);
             }
             catch (Exception)
@@ -52,7 +52,7 @@ namespace WebAPI.Controllers.Admin
         {
             try
             {
-                var user = _getUserQuery.Execute(id);
+                var user = this._getUserQuery.Execute(id);
                 return Ok(user);
             }
             catch (EntityNotFoundException)
@@ -70,7 +70,7 @@ namespace WebAPI.Controllers.Admin
         [Obsolete]
         public ActionResult Post([FromForm] UserDTO request)
         {
-            var validator = new AddUserFluentValidator(_context);
+            var validator = new AddUserFluentValidator(this._context);
             var errors = validator.Validate(request);
             if (!errors.IsValid)
             {
@@ -78,7 +78,7 @@ namespace WebAPI.Controllers.Admin
             }
             try
             {
-                _addUserCommand.Execute(request);
+                this._addUserCommand.Execute(request);
                 return StatusCode(201, "User is succefuly create.");
             }
 
@@ -93,7 +93,7 @@ namespace WebAPI.Controllers.Admin
         [Obsolete]
         public ActionResult Put(int id, [FromForm] UserDTO request)
         {
-            var validator = new UpdateUserFluentValidator(_context, id);
+            var validator = new UpdateUserFluentValidator(this._context, id);
             var errors = validator.Validate(request);
             if (!errors.IsValid)
             {
@@ -102,7 +102,7 @@ namespace WebAPI.Controllers.Admin
             try
             {
                 request.Id = id;
-                _updateUserCommand.Execute(request);
+                this._updateUserCommand.Execute(request);
                 return NoContent();
             }
             catch (EntityNotFoundException)
@@ -121,7 +121,7 @@ namespace WebAPI.Controllers.Admin
         {
             try
             {
-                _deleteUserCommand.Execute(id);
+                this._deleteUserCommand.Execute(id);
                 return StatusCode(204, "User is deleted");
             }
             catch (EntityNotFoundException)

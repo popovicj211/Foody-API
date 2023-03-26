@@ -15,12 +15,10 @@ namespace WebAPI.Controllers
     public class LoginController : ControllerBase
     {
         private ILoginUserQuery _loginUserQuery;
-        private readonly DBContext _context;
 
-        public LoginController(DBContext context, ILoginUserQuery loginUserQuery)
+        public LoginController(ILoginUserQuery loginUserQuery)
         {
-            _loginUserQuery = loginUserQuery;
-            _context = context;
+            this._loginUserQuery = loginUserQuery;
         }
 
         // POST api/<LoginController>
@@ -39,7 +37,7 @@ namespace WebAPI.Controllers
 
             try
             {
-                string token = _loginUserQuery.Execute(value);
+                string token = this._loginUserQuery.Execute(value);
                 HttpContext
                     .Response
                     .Cookies

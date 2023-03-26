@@ -7,7 +7,6 @@ using WebAPI.Email;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Microsoft.AspNetCore.Identity;
 using System.Security.Cryptography;
 using WebAPI.Hashing;
 using Application.Commands;
@@ -16,7 +15,6 @@ using Application.Queries;
 using Implementation.Services.Queriess;
 using Application.FileUpload;
 using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI
 {
@@ -28,7 +26,6 @@ namespace WebAPI
             Configuration = configuration;
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
 
@@ -53,10 +50,8 @@ namespace WebAPI
                      options.JsonSerializerOptions.PropertyNamingPolicy = null;
                  });
 
-
-
             services.AddSwaggerGen(c =>
-            { //<-- NOTE 'Add' instead of 'Configure'
+            {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title = "FoodyAPI",
@@ -163,20 +158,13 @@ namespace WebAPI
                 app.UseHsts();
             }
 
-
-            
             app.UseHttpsRedirection();
-
-           app.UseRouting();
-
-        //    app.UseMvc();
+            app.UseRouting();
+            //    app.UseMvc();
             //   app.UseAuthorization();
             app.UseStaticFiles();
-
             app.UseSwagger();
 
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
-            // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "FoodyAPI V1");

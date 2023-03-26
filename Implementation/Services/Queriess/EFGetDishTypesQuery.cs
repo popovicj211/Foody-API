@@ -7,27 +7,23 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using EFDataAccess;
 using Implementation.EFServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Implementation.Services.Queriess
 {
     public class EFGetDishTypesQuery : BaseService, IGetDishTypesQuery
     {
         private readonly IMapper _mapper;
+
         public EFGetDishTypesQuery(DBContext context, IMapper mapper) : base(context)
         {
-            _mapper = mapper;
+            this._mapper = mapper;
         }
 
         public PagedResponse<DishTypeDTO> Execute(BaseSearchRequest request)
         {
             var dishTypes = this._context.DishTypes.AsQueryable();
 
-            return dishTypes.Where(d => !d.IsDeleted).ProjectTo<DishTypeDTO>(_mapper.ConfigurationProvider).Select(user => new DishTypeDTO
+            return dishTypes.Where(d => !d.IsDeleted).ProjectTo<DishTypeDTO>(this._mapper.ConfigurationProvider).Select(user => new DishTypeDTO
             {
                 Id = user.Id,
                 Name = user.Name

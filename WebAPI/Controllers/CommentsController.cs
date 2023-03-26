@@ -1,13 +1,9 @@
 ﻿using Application.Commands;
 using Application.DataTransfer;
-using Application.Queries;
-using Azure.Core;
 using EFDataAccess;
 using Implementation.FluentValidators.Comment;
 using Implementation.Formatters;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WebAPI.Controllers
 {
@@ -20,8 +16,8 @@ namespace WebAPI.Controllers
 
         public CommentsController(DBContext context, IAddCommentCommand addCommentCommand)
         {
-            _addCommentCommand = addCommentCommand;
-            _context = context;
+            this._addCommentCommand = addCommentCommand;
+            this._context = context;
         }
 
         // POST api/<CommentsController>
@@ -29,7 +25,7 @@ namespace WebAPI.Controllers
         [Obsolete]
         public ActionResult Post([FromForm] CommentDTO request)
         {
-            var validator = new CommentFluentValidator(_context);
+            var validator = new CommentFluentValidator(this._context);
             var errors = validator.Validate(request);
             if (!errors.IsValid)
             {
