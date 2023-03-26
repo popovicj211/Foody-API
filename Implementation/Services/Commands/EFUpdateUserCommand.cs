@@ -22,7 +22,7 @@ namespace Implementation.Services.Commands
         public void Execute(UserDTO request)
         {
             var user = _context.Users.FirstOrDefault(u => u.Id == request.Id);
-            //  SQL_Latin1_General_CP1_CI_AS
+
             if (user == null)
             {
                 throw new EntityNotFoundException("User");

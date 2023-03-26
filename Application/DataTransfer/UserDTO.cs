@@ -13,7 +13,5 @@
         public int RoleId { get; set; }
         public string JwtToken { get; set; }
         public RoleDTO? Role { get; set; }
-        //public List<CommentDTO> Comments { get; set; }
-        //public List<OrderDTO> Orders { get; set; }
     }
 }

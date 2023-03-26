@@ -46,9 +46,7 @@ namespace Implementation.Services.Commands
             if (request.Image != null)
             {
                 var (Server, FilePath) = await _fileService.Upload(request.Image);
-                //Remove previous image in case if user uploaded new image
                 await _fileService.Remove(dish.ImagePath);
-
                 dish.ImagePath = FilePath;
             }
 

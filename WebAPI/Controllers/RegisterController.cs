@@ -1,5 +1,6 @@
 ﻿using Application.Commands;
 using Application.DataTransfer;
+using Application.Helpers;
 using Application.Interfaces;
 using EFDataAccess;
 using Implementation.FluentValidators.User;
@@ -51,10 +52,9 @@ namespace WebAPI.Controllers
 
                 return Ok(new { message = "You have succesfully register.", token });
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                // return StatusCode(500, new { ServerErrorResponse.Message });
-                return StatusCode(500, e);
+                 return StatusCode(500, new { ServerErrorResponse.Message });
             }
         }
     }

@@ -1,5 +1,4 @@
-﻿
-using Application.DataTransfer;
+﻿using Application.DataTransfer;
 using Application.Interfaces;
 
 namespace Application.Commands

@@ -2,7 +2,7 @@
 
 namespace Implementation.FluentValidators.Order
 {
-    internal class UpdateOrderFluentValidator : OrderFluentValidator
+    public class UpdateOrderFluentValidator : OrderFluentValidator
     {
         private readonly int _id;
 

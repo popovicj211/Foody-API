@@ -1,6 +1,5 @@
 ﻿using Application.Commands;
 using Application.Exceptions;
-using AutoMapper;
 using EFDataAccess;
 using Implementation.EFServices;
 

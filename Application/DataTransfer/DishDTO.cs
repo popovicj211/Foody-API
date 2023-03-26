@@ -1,6 +1,4 @@
-﻿using Domain.Entities;
-using Microsoft.AspNetCore.Http;
-using System;
+﻿using Microsoft.AspNetCore.Http;
 namespace Application.DataTransfer
 {
     public class DishDTO : BaseDTO
@@ -18,9 +16,5 @@ namespace Application.DataTransfer
         public decimal Price { get; set; }
         public List<string> Ingredients { get; set; }
         public List<string> TypeDishes { get; set; }
-        //public List<DishIngredientDTO> DishIngredients { get; set; }
-        //public List<DishCommentDTO> DishComments { get; set; }
-        //public List<OrderItemDTO> OrderItems { get; set; }
-        //public List<DishTypeDishDTO> DishTypeDishes { get; set; }
     }
 }
