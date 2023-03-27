@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers.Admin
 {
-    [Route("api/[controller]")]
+    [Route("api/admin/[controller]")]
     [ApiController]
     public class CommentsController : ControllerBase
     {

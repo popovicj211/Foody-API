@@ -161,7 +161,9 @@ namespace WebAPI
             app.UseHttpsRedirection();
             app.UseRouting();
             //    app.UseMvc();
-            //   app.UseAuthorization();
+            app.UseAuthentication();
+            app.UseAuthorization();
+            
             app.UseStaticFiles();
             app.UseSwagger();
 
