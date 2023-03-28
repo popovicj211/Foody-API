@@ -6,6 +6,7 @@ using Application.Searches;
 using EFDataAccess;
 using Implementation.FluentValidators.DishType;
 using Implementation.Formatters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers.Admin
@@ -33,6 +34,7 @@ namespace WebAPI.Controllers.Admin
 
         // GET: api/<DishTypesController>
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult<IEnumerable<DishTypeDTO>> Get([FromQuery] BaseSearchRequest request)
         {
             try
@@ -48,6 +50,7 @@ namespace WebAPI.Controllers.Admin
 
         // GET api/<DishTypesController>/5
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin")]
         public ActionResult<IEnumerable<DishTypeDTO>> Get(int id)
         {
             try
@@ -68,6 +71,7 @@ namespace WebAPI.Controllers.Admin
         // POST api/<DishTypesController>
         [HttpPost]
         [Obsolete]
+        [Authorize(Roles = "Admin")]
         public ActionResult Post([FromBody] DishTypeDTO request)
         {
             var validator = new DishTypeFluentValidator(this._context);
@@ -91,6 +95,7 @@ namespace WebAPI.Controllers.Admin
         // PUT api/<DishTypesController>/5
         [HttpPut("{id}")]
         [Obsolete]
+        [Authorize(Roles = "Admin")]
         public ActionResult Put(int id, [FromBody] DishTypeDTO request)
         {
             var validator = new UpdateDishTypeFluentValidator(this._context, id);
@@ -116,6 +121,7 @@ namespace WebAPI.Controllers.Admin
 
         // DELETE api/<DishTypesController>/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             try

@@ -43,7 +43,7 @@ namespace Implementation.Services.Commands
             _context.Users.Add(mappingToDto);
             _context.SaveChanges();
 
-            var getJwtToken = this._config.GetJwtToken(request);
+            var getJwtToken = this._config.GetJwtToken(mappingToDto);
 
             return getJwtToken;
         }

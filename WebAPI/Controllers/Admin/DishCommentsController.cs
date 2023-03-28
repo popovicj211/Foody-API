@@ -2,6 +2,7 @@
 using Application.DataTransfer;
 using Application.Exceptions;
 using EFDataAccess;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers.Admin
@@ -23,6 +24,7 @@ namespace WebAPI.Controllers.Admin
 
         // POST api/<DishCommentsController>
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Post([FromBody] DishCommentDTO request)
         {
             try
@@ -46,6 +48,7 @@ namespace WebAPI.Controllers.Admin
 
         // DELETE api/<DishCommentsController>/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id, [FromForm] DishCommentDTO request)
         {
             try

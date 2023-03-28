@@ -27,7 +27,8 @@ namespace Implementation.Services.Queriess
 
         public string Execute(LoginDTO search)
         {
-            var user = _context.Users.Where(u => !u.IsDeleted && u.IsActived && u.Email == search.Email).Include(r => r.Role).ProjectTo<UserDTO>(this._mapper.ConfigurationProvider).FirstOrDefault();
+            // var user = _context.Users.Where(u => !u.IsDeleted && u.IsActived && u.Email == search.Email).Include(r => r.Role).ProjectTo<UserDTO>(this._mapper.ConfigurationProvider).FirstOrDefault();
+            var user = _context.Users.Where(u => !u.IsDeleted && u.IsActived && u.Email == search.Email).Include(r => r.Role).FirstOrDefault();
 
             if (user == null)
             {

@@ -15,6 +15,7 @@ using Application.Queries;
 using Implementation.Services.Queriess;
 using Application.FileUpload;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebAPI
 {
@@ -119,6 +120,8 @@ namespace WebAPI
             string key = Configuration.GetSection("JwtKey").Value;
 
             byte[] keyBytes = Encoding.ASCII.GetBytes(key);
+
+        
 
             services.AddAuthentication(x =>
             {

@@ -6,6 +6,7 @@ using Application.Searches;
 using EFDataAccess;
 using Implementation.FluentValidators.Order;
 using Implementation.Formatters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers.Admin
@@ -33,6 +34,7 @@ namespace WebAPI.Controllers.Admin
 
         // GET: api/<OrdersController>
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult<IEnumerable<OrderDTO>> Get([FromQuery] BaseSearchRequest request)
         {
             try
@@ -48,6 +50,7 @@ namespace WebAPI.Controllers.Admin
 
         // GET api/<OrdersController>/5
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin")]
         public ActionResult<IEnumerable<OrderDTO>> Get(int id)
         {
             try
@@ -68,6 +71,7 @@ namespace WebAPI.Controllers.Admin
         // POST api/<OrdersController>
         [HttpPost]
         [Obsolete]
+        [Authorize(Roles = "Admin")]
         public ActionResult Post([FromBody] OrderDTO request)
         {
             var validator = new OrderFluentValidator(this._context);
@@ -91,6 +95,7 @@ namespace WebAPI.Controllers.Admin
         // PUT api/<OrdersController>/5
         [HttpPut("{id}")]
         [Obsolete]
+        [Authorize(Roles = "Admin")]
         public ActionResult Put(int id, [FromBody] OrderDTO request)
         {
             try
@@ -110,6 +115,7 @@ namespace WebAPI.Controllers.Admin
 
         // DELETE api/<OrdersController>/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             try

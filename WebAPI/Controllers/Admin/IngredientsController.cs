@@ -6,6 +6,7 @@ using Application.Searches;
 using EFDataAccess;
 using Implementation.FluentValidators.Ingredient;
 using Implementation.Formatters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers.Admin
@@ -33,6 +34,7 @@ namespace WebAPI.Controllers.Admin
 
         // GET: api/<IngredientsControllers>
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult<IEnumerable<IngredientDTO>> Get([FromQuery] BaseSearchRequest request)
         {
             try
@@ -48,6 +50,7 @@ namespace WebAPI.Controllers.Admin
 
         // GET api/<IngredientsControllers>/5
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin")]
         public ActionResult<IEnumerable<IngredientDTO>> Get(int id)
         {
             try
@@ -68,6 +71,7 @@ namespace WebAPI.Controllers.Admin
         // POST api/<IngredientsControllers>
         [HttpPost]
         [Obsolete]
+        [Authorize(Roles = "Admin")]
         public ActionResult Post([FromForm] IngredientDTO request)
         {
             var validator = new IngredientFluentValidator(this._context);
@@ -90,6 +94,7 @@ namespace WebAPI.Controllers.Admin
 
         // PUT api/<IngredientsControllers>/5
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         [Obsolete]
         public ActionResult Put(int id, [FromForm] IngredientDTO request)
         {
@@ -116,6 +121,7 @@ namespace WebAPI.Controllers.Admin
 
         // DELETE api/<IngredientsControllers>/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             try

@@ -6,6 +6,7 @@ using Application.Searches;
 using EFDataAccess;
 using Implementation.FluentValidators.Comment;
 using Implementation.Formatters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers.Admin
@@ -33,6 +34,7 @@ namespace WebAPI.Controllers.Admin
 
         // GET: api/<CommentsController>
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult<IEnumerable<CommentDTO>>  Get([FromQuery] BaseSearchRequest request)
         {
             try
@@ -48,6 +50,7 @@ namespace WebAPI.Controllers.Admin
 
         // GET api/<CommentsController>/5
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin")]
         public ActionResult<IEnumerable<CommentDTO>> Get(int id)
         {
             try
@@ -68,6 +71,7 @@ namespace WebAPI.Controllers.Admin
         // POST api/<CommentsController>
         [HttpPost]
         [Obsolete]
+        [Authorize(Roles = "Admin")]
         public ActionResult Post([FromForm] CommentDTO request)
         {
             var validator = new CommentFluentValidator(this._context);
@@ -91,6 +95,7 @@ namespace WebAPI.Controllers.Admin
         // PUT api/<CommentsController>/5
         [HttpPut("{id}")]
         [Obsolete]
+        [Authorize(Roles = "Admin")]
         public ActionResult Put(int id, [FromForm] CommentDTO request)
         {
             var validator = new UpdateCommentFluentValidator(this._context, id);
@@ -116,6 +121,7 @@ namespace WebAPI.Controllers.Admin
 
         // DELETE api/<CommentsController>/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             try

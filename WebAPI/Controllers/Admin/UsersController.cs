@@ -6,6 +6,7 @@ using Application.Searches;
 using EFDataAccess;
 using Implementation.FluentValidators.User;
 using Implementation.Formatters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers.Admin
@@ -33,6 +34,7 @@ namespace WebAPI.Controllers.Admin
 
         // GET: api/admin/<UserControllers>
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult<IEnumerable<UserDTO>> Get([FromQuery] BaseSearchRequest request)
         {
             try
@@ -48,6 +50,7 @@ namespace WebAPI.Controllers.Admin
 
         // GET api/admin/<UserControllers>/5
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin")]
         public ActionResult<IEnumerable<UserDTO>> Get(int id)
         {
             try
@@ -68,6 +71,7 @@ namespace WebAPI.Controllers.Admin
         // POST api/admin/<UserControllers>
         [HttpPost]
         [Obsolete]
+        [Authorize(Roles = "Admin")]
         public ActionResult Post([FromForm] UserDTO request)
         {
             var validator = new AddUserFluentValidator(this._context);
@@ -90,6 +94,7 @@ namespace WebAPI.Controllers.Admin
 
         // PUT api/admin/<UserControllers>/5
         [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
         [Obsolete]
         public ActionResult Put(int id, [FromForm] UserDTO request)
         {
@@ -117,6 +122,7 @@ namespace WebAPI.Controllers.Admin
 
         // DELETE api/admin/<UserControllers>/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             try

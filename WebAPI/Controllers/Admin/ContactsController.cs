@@ -4,7 +4,7 @@ using Application.Exceptions;
 using Application.Queries;
 using Application.Searches;
 using EFDataAccess;
-using Implementation.FluentValidators.DIsh;
+using Implementation.FluentValidators.Contact;
 using Implementation.Formatters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,51 +13,50 @@ namespace WebAPI.Controllers.Admin
 {
     [Route("api/admin/[controller]")]
     [ApiController]
-    public class DishesController : ControllerBase
+    public class ContactsController : ControllerBase
     {
-        private IAddDishCommand _addDishCommand;
-        private IDeleteDishCommand _deleteDishCommand;
-        private IGetDishQuery _getDishQuery;
-        private IUpdateDishCommand _updateDishCommand;
-        private IGetDishesQuery _getDishesQuery;
+        private IAddContactCommand _addContactCommand;
+        private IDeleteContactCommand _deleteContactCommand;
+        private IGetContactQuery _getContactQuery;
+        private IUpdateContactCommand _updateContactCommand;
+        private IGetContactsQuery _getContactsQuery;
         private readonly DBContext _context;
 
-        public DishesController(DBContext context, IAddDishCommand addDishCommand, IDeleteDishCommand deleteDishCommand, IGetDishQuery getDishQuery, IUpdateDishCommand updateDishCommand, IGetDishesQuery getDishesQuery)
+        public ContactsController(DBContext context, IAddContactCommand addContactCommand, IDeleteContactCommand deleteContactCommand, IGetContactQuery getContactQuery, IUpdateContactCommand updateContactCommand, IGetContactsQuery getContactsQuery)
         {
-            this._addDishCommand = addDishCommand;
-            this._deleteDishCommand = deleteDishCommand;
-            this._getDishQuery = getDishQuery;
-            this._updateDishCommand = updateDishCommand;
-            this._getDishesQuery = getDishesQuery;
+            this._addContactCommand = addContactCommand;
+            this._deleteContactCommand = deleteContactCommand;
+            this._getContactQuery = getContactQuery;
+            this._updateContactCommand = updateContactCommand;
+            this._getContactsQuery = getContactsQuery;
             this._context = context;
         }
 
-        // GET: api/<DishesController>
+        // GET: api/admin/<ContactsController>
         [HttpGet]
         [Authorize(Roles = "Admin")]
-
-        public ActionResult<IEnumerable<DishDTO>> Get([FromQuery] BaseSearchRequest request)
+        public ActionResult<IEnumerable<ContactDTO>> Get([FromQuery] BaseSearchRequest request)
         {
             try
             {
-                var dishes = this._getDishesQuery.Execute(request);
-                return Ok(dishes);
+                var contacts = this._getContactsQuery.Execute(request);
+                return Ok(contacts);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                 return StatusCode(500, "Server error, try later");
+                return StatusCode(500, "Server error, try later");
             }
         }
 
-        // GET api/<DishesController>/5
+        // GET api/admin/<ContactsController>/5
         [HttpGet("{id}")]
         [Authorize(Roles = "Admin")]
-        public ActionResult<IEnumerable<DishDTO>> Get(int id)
+        public ActionResult<IEnumerable<ContactDTO>> Get(int id)
         {
             try
             {
-                var dish = this._getDishQuery.Execute(id);
-                return Ok(dish);
+                var contact = this._getContactQuery.Execute(id);
+                return Ok(contact);
             }
             catch (EntityNotFoundException)
             {
@@ -69,13 +68,13 @@ namespace WebAPI.Controllers.Admin
             }
         }
 
-        // POST api/<DishesController>
+        // POST api/admin/<ContactsController>
         [HttpPost]
-        [Obsolete]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> Post([FromForm] DishDTO request)
+        [Obsolete]
+        public ActionResult Post([FromForm] ContactDTO request)
         {
-            var validator = new DishFluentValidator(this._context);
+            var validator = new ContactFluentValidator(this._context);
             var errors = validator.Validate(request);
             if (!errors.IsValid)
             {
@@ -83,8 +82,8 @@ namespace WebAPI.Controllers.Admin
             }
             try
             {
-               await this._addDishCommand.Execute(request);
-                return StatusCode(201, "Dish is succesfully create.");
+                this._addContactCommand.Execute(request);
+                return StatusCode(201, "Contact is succesfully create.");
             }
 
             catch (Exception)
@@ -93,13 +92,13 @@ namespace WebAPI.Controllers.Admin
             }
         }
 
-        // PUT api/<DishesController>/5
+        // PUT api/admin/<ContactsController>/5
         [HttpPut("{id}")]
-        [Obsolete]
         [Authorize(Roles = "Admin")]
-        public ActionResult Put(int id, [FromForm] DishDTO request)
+        [Obsolete]
+        public ActionResult Put(int id, [FromForm] ContactDTO request)
         {
-            var validator = new UpdateDishFluentValidator(this._context, id);
+            var validator = new UpdateContactFluentValidator(this._context, id);
             var errors = validator.Validate(request);
             if (!errors.IsValid)
             {
@@ -107,7 +106,7 @@ namespace WebAPI.Controllers.Admin
             }
             try
             {
-                this._updateDishCommand.Execute(request);
+                this._updateContactCommand.Execute(request);
                 return NoContent();
             }
             catch (EntityNotFoundException)
@@ -120,15 +119,15 @@ namespace WebAPI.Controllers.Admin
             }
         }
 
-        // DELETE api/<DishesController>/5
+        // DELETE api/admin/<ContactsController>/5
         [HttpDelete("{id}")]
         [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             try
             {
-                this._deleteDishCommand.Execute(id);
-                return StatusCode(204, "Dish is deleted");
+                this._deleteContactCommand.Execute(id);
+                return StatusCode(204, "Contact is deleted");
             }
             catch (EntityNotFoundException)
             {

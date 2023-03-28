@@ -1,4 +1,4 @@
-﻿using Application.DataTransfer;
+﻿using Domain.Entities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -9,7 +9,7 @@ namespace Implementation.Services.Exstensions
 {
     public static class JwtTokenExstensions
     {
-        public static string GetJwtToken(this IConfiguration config, UserDTO dto)
+        public static string GetJwtToken(this IConfiguration config, UserEntity dto)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             string key = config.GetSection("JwtKey").Value;
@@ -21,6 +21,7 @@ namespace Implementation.Services.Exstensions
                     new Claim("id", dto.Id.ToString()),
                     new Claim(ClaimTypes.Email, dto.Email),
                     new Claim(ClaimTypes.GivenName, $"{dto.FirstName} {dto.LastName}"),
+                    new Claim(ClaimTypes.Role, String.IsNullOrEmpty(dto.Role.Name) ? "Customer" : dto.Role.Name)
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(keyBytes), SecurityAlgorithms.HmacSha256Signature)
